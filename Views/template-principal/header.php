@@ -103,7 +103,7 @@
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="#">
                         <i class="fas fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-util text-white">0</span>
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-util text-white" id="btnCantidadCarrito">0</span>
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="<?php echo BASE_URL . 'principal/deseo'?>">
                         <i class="fas fa-fw fa-heart text-dark mr-1"></i>
