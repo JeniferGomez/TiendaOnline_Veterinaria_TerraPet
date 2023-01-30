@@ -8,76 +8,6 @@
                 <div class="card mb-3">
                     <img class="card-img img-fluid" src="<?php echo $data['producto']['imagen'];; ?>" alt="Card image cap" id="product-detail">
                 </div>
-                <div class="row">
-                    <!--Start Controls-->
-                    <div class="col-1 align-self-center">
-                        <a href="#multi-item-example" role="button" data-bs-slide="prev">
-                            <i class="text-dark fa fa-chevron-left"></i>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </div>
-                    <!--End Controls-->
-                    <!--Start Carousel Wrapper-->
-                    <div id="multi-item-example" class="col-10 carousel slide carousel-multi-item" data-bs-ride="carousel">
-                        <!--Start Slides-->
-                        <div class="carousel-inner product-links-wap" role="listbox">
-
-                            <!--First slide-->
-                            <div class="carousel-item active">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="<?php echo BASE_URL; ?>assets/img/detail/detail1.jpg" alt="Product Image 1">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="<?php echo BASE_URL; ?>assets/img/detail/detail2.jpg" alt="Product Image 2">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="<?php echo BASE_URL; ?>assets/img/detail/detail3.jpg" alt="Product Image 3">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/.First slide-->
-
-                            <!--Second slide-->
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="<?php echo BASE_URL; ?>assets/img/detail/detail4.jpg" alt="Product Image 4">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="<?php echo BASE_URL; ?>assets/img/detail/detail5.jpg" alt="Product Image 5">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="<?php echo BASE_URL; ?>assets/img/detail/detail6.jpg" alt="Product Image 6">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/.Second slide-->
-                        </div>
-                        <!--End Slides-->
-                    </div>
-                    <!--End Carousel Wrapper-->
-                    <!--Start Controls-->
-                    <div class="col-1 align-self-center">
-                        <a href="#multi-item-example" role="button" data-bs-slide="next">
-                            <i class="text-dark fa fa-chevron-right"></i>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                    <!--End Controls-->
-                </div>
             </div>
             <!-- col end -->
             <div class="col-lg-7 mt-5">
@@ -147,7 +77,7 @@
                             <img class="card-img rounded-0 img-fluid" src="<?php echo $producto['imagen']; ?>">
                             <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                 <ul class="list-unstyled">
-                                    <li><a class="btn btn-util text-white" href="#"><i class="fas fa-heart"></i></a></li>
+                                    <li><a class="btn btn-util text-white btnAddDeseo" href="#" prod="<?php echo $producto['id']; ?>"><i class="fas fa-heart"></i></a></li>
                                     <li><a class="btn btn-util text-white mt-2" href="<?php echo BASE_URL . 'principal/detail/' . $producto['id']; ?>"><i class="fas fa-eye"></i></a></li>
                                     <li><a class="btn btn-util text-white mt-2 btnAddcarrito" href="#" prod="<?php echo $producto['id']; ?>"><i class="fas fa-cart-plus"></i></a></li>
                                 </ul>
