@@ -119,7 +119,7 @@ function cantidadCarrito() {
 
 //ver carrito
 function getListaCarrito() {
-    const url = base_url + 'principal/listaCarrito';
+    const url = base_url + 'principal/listaProductos';
     const http = new XMLHttpRequest();
     http.open('POST', url, true);
     http.send(JSON.stringify(listaCarrito));
