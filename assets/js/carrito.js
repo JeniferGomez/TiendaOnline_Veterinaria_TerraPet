@@ -75,12 +75,15 @@ function cantidadDeseo() {
 }
 
 //agregar productos al carrito
-function agregarCarrito(idProducto, cantidad) {
+function agregarCarrito(idProducto, cantidad, accion = false) {
     if (localStorage.getItem('listaCarrito') == null) {
         listaCarrito = [];
     } else {
         let listasExiste = JSON.parse(localStorage.getItem('listaCarrito'));
         for (let i = 0; i < listasExiste.length; i++) {
+            if (accion) {
+                eliminarListaDeseo(idProducto);
+            }
             if (listasExiste[i]['idProducto'] == idProducto) {
                 Swal.fire(
                     'Aviso',
@@ -150,7 +153,7 @@ function btnEliminarCarrito() {
         listaEliminar[i].addEventListener('click', function() {
             let idProducto = listaEliminar[i].getAttribute('prod');
             eliminarListaCarrito(idProducto);
-        });
+        })
     }
 }
 

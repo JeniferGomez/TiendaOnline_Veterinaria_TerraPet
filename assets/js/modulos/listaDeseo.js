@@ -27,6 +27,7 @@ function getListaDeseo() {
             </tr>`;
             });
             tableLista.innerHTML = html;
+            btnEliminarDeseo();
             btnAgregarProducto();
         }
     }
@@ -60,11 +61,11 @@ function eliminarListaDeseo(idProducto) {
 
 //agregar productos desde la lista de deseos
 function btnAgregarProducto() {
-    let listaAgregar = document.querySelectorAll('.btnEliminarDeseo');
+    let listaAgregar = document.querySelectorAll('.btnAddCart');
     for (let i = 0; i < listaAgregar.length; i++) {
         listaAgregar[i].addEventListener('click', function() {
             let idProducto = listaAgregar[i].getAttribute('prod');
-            agregarCarrito(idProducto, 1);
+            agregarCarrito(idProducto, 1, true);
         });
     }
 }
