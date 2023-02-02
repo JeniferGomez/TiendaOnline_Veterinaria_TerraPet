@@ -68,7 +68,7 @@
                 <input id="nombreRegistro" class="form-control" type="text" name="nombreRegistro" placeholder="Nombre Completo">
               </div>
               <div class="form-group mb-3">
-                <label for="correoRegistro"><i class="fas fa-key"></i>Contraseña</label>
+                <label for="correoRegistro"><i class="fas fa-envelope"></i>Correo</label>
                 <input id="correoRegistro" class="form-control" type="text" name="correoRegistro" placeholder="Contraseña">
               </div>
               <div class="form-group mb-3">
@@ -77,7 +77,7 @@
               </div>
               <a href="#" id="btnLogin">Ya tienes una cuenta?</a>
               <div class="float-end">
-            <button class="btn btn-primary btn-lg" type="button">Registrarse</button>
+            <button class="btn btn-primary btn-lg" type="button" id="registrarse">Registrarse</button>
           </div>
             </div>
           </div>
