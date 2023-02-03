@@ -47,15 +47,14 @@
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info.angel@gmail.com">info.angel@gmail.com</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:clinicaterrapet@gmail.com">clinicaterrapet@gmail.com</a>
                     <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:900 897 537">900 897 537</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:3117996339">3117996339</a>
                 </div>
                 <div>
                     <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-square fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
                 </div>
             </div>
         </div>

@@ -32,7 +32,7 @@
             </div>
             <div class="col-lg-6 mb-0 d-flex align-items-center">
               <div class="text-align-left">
-                <h1 class="h1">Para tu finca</h1>
+              <h1 class="h1 text-util"><b>Para tu finca</b></h1>
                 <h3 class="h2">Productos agricolas</h3>
                 <p>
                  Tu operación productiva nunca tuvo un aliado que te ofreciera tanta variedad de productos para ayudar en tu día a día como <strong>Terra Pet</strong>. Compra 
@@ -51,12 +51,10 @@
             </div>
             <div class="col-lg-6 mb-0 d-flex align-items-center">
               <div class="text-align-left">
-                <h1 class="h1">Repr in voluptate</h1>
-                <h3 class="h2">Ullamco laboris nisi ut </h3>
+              <h1 class="h1 text-util"><b>Veterinaria</b></h1>
+                <h3 class="h2">Servicios Clínicos Veterinarios</h3>
                 <p>
-                  We bring you 100% free CSS templates for your websites.
-                  If you wish to support TemplateMo, please make a small contribution via PayPal or tell your friends
-                  about our website. Thank you.
+                Terra Pet cuenta con un excelente equipo de profesionales de médicos veterinarios altamente calificados en el sector de la medicina para animales, capacitados de ofrecer una calidad de vida a sus mascotas.
                 </p>
               </div>
             </div>
@@ -106,7 +104,7 @@
         <div class="col-lg-6 m-auto">
           <h1 class="h1">Productos</h1>
           <p>
-            Nuevos productossssss
+            Nuevos productos para ti.
           </p>
         </div>
       </div>
