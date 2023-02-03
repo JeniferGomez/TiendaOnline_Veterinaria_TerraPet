@@ -15,10 +15,10 @@
             </div>
             <div class="col-lg-6 mb-0 d-flex align-items-center">
               <div class="text-align-left align-self-center">
-                <h1 class="h1 text-util"><b>Laptop</b> Core i7</h1>
-                <h3 class="h2">Lorem ipsum dolor sit amet.</h3>
+                <h1 class="h1 text-util"><b>Mascotas</b></h1>
+                <h3 class="h2">Alimentos y productos para tus mascotas</h3>
                 <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis cum iste beatae itaque impedit dolorem distinctio repudiandae quae harum, molestias officiis numquam optio, corrupti in ea voluptate? Aliquid, recusandae. Quis.</p>
+                Hemos hecho una increíble selección de marcas y productos exclusivos que mantendrá a tu perro sano, fuerte y feliz. Haz clic y encuentra lo que necesites.</p>
               </div>
             </div>
           </div>
@@ -32,12 +32,11 @@
             </div>
             <div class="col-lg-6 mb-0 d-flex align-items-center">
               <div class="text-align-left">
-                <h1 class="h1">Proident occaecat</h1>
-                <h3 class="h2">Aliquip ex ea commodo consequat</h3>
+                <h1 class="h1">Para tu finca</h1>
+                <h3 class="h2">Productos agricolas</h3>
                 <p>
-                  You are permitted to use this Zay CSS template for your commercial websites.
-                  You are <strong>not permitted</strong> to re-distribute the template ZIP file in any kind of template
-                  collection websites.
+                 Tu operación productiva nunca tuvo un aliado que te ofreciera tanta variedad de productos para ayudar en tu día a día como <strong>Terra Pet</strong>. Compra 
+                 en una sola tienda virtual todo lo que necesitas y recibe todo a domicilioen muy poco tiempo.
                 </p>
               </div>
             </div>
@@ -48,7 +47,7 @@
         <div class="container">
           <div class="row p-5">
             <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-              <img class="img-fluid" src="<?php echo BASE_URL; ?>assets/img/carrusel/3.png" alt="">
+              <img class="img-fluid" src="<?php echo BASE_URL; ?>assets/img/carrusel/3.jpg" alt="">
             </div>
             <div class="col-lg-6 mb-0 d-flex align-items-center">
               <div class="text-align-left">
