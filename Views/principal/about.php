@@ -23,8 +23,7 @@
             <div class="col-lg-6 m-auto">
                 <h1 class="h1">Nuestros servicios</h1>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    Lorem ipsum dolor sit amet.
+                En Clínica Veterinaria TerraPet una asistencia completa y de calidad a tu mascota. Nuestro principal objetivo es mantener la salud y el bienestar de nuestros animales y ayudarlos a restablecerse cuando están enfermos. Para ello, contamos con un personal altamente cualificado e instalaciones modernas y bien equipadas.
                 </p>
             </div>
         </div>
@@ -33,28 +32,28 @@
             <div class="col-md-6 col-lg-3 pb-5">
                 <div class="h-100 py-5 services-icon-wap shadow">
                     <div class="h1 text-util text-center"><i class="fa fa-truck fa-lg"></i></div>
-                    <h2 class="h5 mt-4 text-center">Delivery Services</h2>
+                    <h2 class="h5 mt-4 text-center">Servicio de entrega</h2>
                 </div>
             </div>
 
             <div class="col-md-6 col-lg-3 pb-5">
                 <div class="h-100 py-5 services-icon-wap shadow">
                     <div class="h1 text-util text-center"><i class="fa fa-exchange-alt"></i></div>
-                    <h2 class="h5 mt-4 text-center">Shipping & Return</h2>
+                    <h2 class="h5 mt-4 text-center">Envío y devolución</h2>
                 </div>
             </div>
 
             <div class="col-md-6 col-lg-3 pb-5">
                 <div class="h-100 py-5 services-icon-wap shadow">
                     <div class="h1 text-util text-center"><i class="fa fa-percent"></i></div>
-                    <h2 class="h5 mt-4 text-center">Promotion</h2>
+                    <h2 class="h5 mt-4 text-center">Promociones</h2>
                 </div>
             </div>
 
             <div class="col-md-6 col-lg-3 pb-5">
                 <div class="h-100 py-5 services-icon-wap shadow">
                     <div class="h1 text-util text-center"><i class="fa fa-user"></i></div>
-                    <h2 class="h5 mt-4 text-center">24 Hours Service</h2>
+                    <h2 class="h5 mt-4 text-center">Servicio 24 Horas</h2>
                 </div>
             </div>
         </div>
