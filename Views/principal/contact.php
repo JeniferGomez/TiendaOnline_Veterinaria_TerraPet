@@ -36,7 +36,7 @@
                 </div>
                 <div class="row">
                     <div class="col text-end mt-2">
-                        <button type="submit" class="btn btn-success btn-lg px-3">Hablemos</button>
+                        <button type="submit" class="btn btn-success btn-lg px-3">Hablémos</button>
                     </div>
                 </div>
             </form>
