@@ -17,6 +17,24 @@ class ClientesModel extends Query{
         }
         return $res;
     }
+    public function getToken($token)
+    {
+        $sql = "SELECT * FROM clientes WHERE token = '$token'";
+        return $this -> select($sql);
+    }
+
+    public function actualizarVerify($id)
+    {
+        $sql = "UPDATE clientes SET token=?, verify=? WHERE id=?";
+        $datos = array(null, 1, $id);
+        $data = $this -> save($sql, $datos);
+        if ($data == 1) {
+            $res = $data;
+        }else{
+           $res = 0; 
+        }
+        return $res;
+    }
 }
 
 ?>
