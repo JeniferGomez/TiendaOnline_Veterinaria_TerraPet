@@ -12,46 +12,47 @@ const correoRegistro = document.querySelector('#correoRegistro');
 const correoLogin = document.querySelector('#correoLogin');
 const claveLogin = document.querySelector('#claveLogin');
 
+const modalLogin = new bootstrap.Modal(document.getElementById('modalLogin'))
 
 document.addEventListener('DOMContentLoaded', function() {
     btnRegister.addEventListener('click', function() {
         frmLogin.classList.add('d-none');
         frmRegister.classList.remove('d-none');
-    })
+    });
     btnLogin.addEventListener('click', function() {
-            frmRegister.classList.add('d-none');
-            frmLogin.classList.remove('d-none');
-        })
-        //registro
+        frmRegister.classList.add('d-none');
+        frmLogin.classList.remove('d-none');
+    });
+    //registro
     registrarse.addEventListener('click', function() {
-            if (nombreRegistro.value == '' || correoRegistro.value == '' || claveRegistro.value == '') {
-                Swal.fire('Aviso', 'Todos los campos son requeridos', 'warning');
-            } else {
-                let formData = new FormData();
-                formData.append('nombre', nombreRegistro.value);
-                formData.append('clave', claveRegistro.value);
-                formData.append('correo', correoRegistro.value);
-                ////////////
-                const url = base_url + 'clientes/registroDirecto';
-                const http = new XMLHttpRequest();
-                http.open('POST', url, true);
-                http.send(formData);
-                http.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        const res = JSON.parse(this.responseText);
-                        Swal.fire('Aviso', res.msg, res.icono);
-                        if (res.icono == 'success') {
-                            setTimeout(() => {
-                                enviarCorreo(correoRegistro.value, res.token);
-                            }, 2000);
-                        }
+        if (nombreRegistro.value == '' || correoRegistro.value == '' || claveRegistro.value == '') {
+            Swal.fire('Aviso', 'Todos los campos son requeridos', 'warning');
+        } else {
+            let formData = new FormData();
+            formData.append('nombre', nombreRegistro.value);
+            formData.append('clave', claveRegistro.value);
+            formData.append('correo', correoRegistro.value);
+            ////////////
+            const url = base_url + 'clientes/registroDirecto';
+            const http = new XMLHttpRequest();
+            http.open('POST', url, true);
+            http.send(formData);
+            http.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    const res = JSON.parse(this.responseText);
+                    Swal.fire('Aviso', res.msg, res.icono);
+                    if (res.icono == 'success') {
+                        setTimeout(() => {
+                            enviarCorreo(correoRegistro.value, res.token);
+                        }, 2000);
                     }
                 }
             }
+        }
 
 
-        })
-        //login directo
+    });
+    //login directo
     login.addEventListener('click', function() {
         if (correoLogin.value == '' || claveLogin.value == '') {
             Swal.fire('Aviso', 'Todos los campos son requeridos', 'warning');
@@ -65,19 +66,20 @@ document.addEventListener('DOMContentLoaded', function() {
             http.open('POST', url, true);
             http.send(formData);
             http.onreadystatechange = function() {
-                console.log(this.responseText);
-                //if (this.readyState == 4 && this.status == 200) {
-                //const res = JSON.parse(this.responseText);
-                //Swal.fire('Aviso', res.msg, res.icono);
-                //if (res.icono == 'success') {
-
-                //  }
-                //}
+                if (this.readyState == 4 && this.status == 200) {
+                    const res = JSON.parse(this.responseText);
+                    Swal.fire('Aviso', res.msg, res.icono);
+                    if (res.icono == 'success') {
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 2000);
+                    }
+                }
             }
         }
 
 
-    })
+    });
 });
 
 function enviarCorreo(correo, token) {
@@ -99,4 +101,9 @@ function enviarCorreo(correo, token) {
             }
         }
     }
+}
+
+function abrirModalLogin() {
+    myModal.hide();
+    modalLogin.show();
 }

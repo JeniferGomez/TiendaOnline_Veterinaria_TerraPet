@@ -24,10 +24,13 @@
           </table>
         </div>
       </div>
-      <div class="modal-footer">
+      <div class="d-flex justify-content-around mb-3">
         <h3 id="totalGeneral"></h3>
-        <a class="btn btn-outline-primary" href="<?php echo BASE_URL . 'clientes'; ?>">Procesar pedido</a>
-
+        <?php if (!empty($_SESSION['correoCliente'])) { ?>
+          <a class="btn btn-outline-primary" href="<?php echo BASE_URL . 'clientes'; ?>">Procesar pedido</a>
+        <?php } else { ?>
+          <a class="btn btn-outline-primary" href="#" onclick="abrirModalLogin();">Login</a>
+        <?php } ?>
       </div>
     </div>
   </div>
@@ -58,8 +61,8 @@
               </div>
               <a href="#" id="btnRegister">No tienes cuenta?</a>
               <div class="float-end">
-            <button class="btn btn-primary btn-lg" type="button" id="login">Login</button>
-          </div>
+                <button class="btn btn-primary btn-lg" type="button" id="login">Login</button>
+              </div>
             </div>
             <!--formulario de registro-->
             <div class="col-md-12 d-none" id="frmRegister">
@@ -77,8 +80,8 @@
               </div>
               <a href="#" id="btnLogin">Ya tienes una cuenta?</a>
               <div class="float-end">
-            <button class="btn btn-primary btn-lg" type="button" id="registrarse">Registrarse</button>
-          </div>
+                <button class="btn btn-primary btn-lg" type="button" id="registrarse">Registrarse</button>
+              </div>
             </div>
           </div>
         </form>
@@ -98,7 +101,7 @@
         <ul class="list-unstyled text-light footer-link-list">
           <li>
             <i class="fas fa-map-marker-alt fa-fw"></i>
-           Vereda Morcá, Sogamos, Boyacá.
+            Vereda Morcá, Sogamos, Boyacá.
           </li>
           <li>
             <i class="fa fa-phone fa-fw"></i>
