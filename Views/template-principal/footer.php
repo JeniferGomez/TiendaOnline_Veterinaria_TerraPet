@@ -58,7 +58,7 @@
               </div>
               <a href="#" id="btnRegister">No tienes cuenta?</a>
               <div class="float-end">
-            <button class="btn btn-primary btn-lg" type="button">Login</button>
+            <button class="btn btn-primary btn-lg" type="button" id="login">Login</button>
           </div>
             </div>
             <!--formulario de registro-->

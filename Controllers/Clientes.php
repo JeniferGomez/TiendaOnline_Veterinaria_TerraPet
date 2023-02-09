@@ -15,11 +15,11 @@ class Clientes extends Controller
     }
     public function index()
     {
-        if (empty($_SESSION['correo'])) {
+        if (empty($_SESSION['correoCliente'])) {
             header('Location: ' . BASE_URL);
         }
         $data['title'] = 'Tu perfil';
-        $data['verificar'] = $this->model->getVerificar($_SESSION['correo']);
+        $data['verificar'] = $this->model->getVerificar($_SESSION['correoCliente']);
         $this->views->getView('principal', "perfil", $data);
     }
     public function registroDirecto()
@@ -37,8 +37,8 @@ class Clientes extends Controller
                     $hash = password_hash($clave, PASSWORD_DEFAULT);
                     $data = $this->model->registroDirecto($nombre, $correo, $hash, $token);
                     if ($data > 0) {
-                        $_SESSION['correo'] = $correo;
-                        $_SESSION['nombre'] = $nombre;
+                        $_SESSION['correoCliente'] = $correo;
+                        $_SESSION['nombreCliente'] = $nombre;
                         $mensaje = array('msg' => 'Registrado con éxito', 'icono' => 'success', 'token' => $token);
                     } else {
                         $mensaje = array('msg' => 'Error al registrarse', 'icono' => 'error');
@@ -93,6 +93,33 @@ class Clientes extends Controller
         if (!empty($verificar)) {
             $data = $this->model->actualizarVerify($verificar['id']);
             header('Location: ' . BASE_URL . 'clientes');
+        }
+    }
+    //Validar los datos del login
+    //Verficar que los campos no esten vacios
+    public function loginDirecto()
+    {
+        if (isset($_POST['correoLogin']) && isset($_POST['claveLogin'])) {
+            if (empty($_POST['correoLogin']) || empty($_POST['claveLogin'])) {
+                $mensaje = array('msg' => 'Todos los campos son requeridos', 'icono' => 'warning');
+            } else {
+                $correo = $_POST['correoLogin'];
+                $clave = $_POST['claveLogin'];
+                $verificar = $this->model->getVerificar($correo);
+                if (empty($verificar)) {
+                    if (password_verify($clave, $verificar['clave'])) {
+                        $_SESSION['correoCliente'] = $verificar['correo'];
+                        $_SESSION['nombreCliente'] = $verificar['nombre'];
+                        $mensaje = array('msg' => 'Ok', 'icono' => 'success');
+                    } else {
+                        $mensaje = array('msg' => 'Contraseña incorrecta', 'icono' => 'error');
+                    }
+                } else {
+                    $mensaje = array('msg' => 'El correo no existe', 'icono' => 'warning');
+                }
+            }
+            echo json_encode($mensaje, JSON_UNESCAPED_UNICODE);
+            die();
         }
     }
 }
