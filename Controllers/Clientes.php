@@ -106,7 +106,7 @@ class Clientes extends Controller
                 $correo = $_POST['correoLogin'];
                 $clave = $_POST['claveLogin'];
                 $verificar = $this->model->getVerificar($correo);
-                if (empty($verificar)) {
+                if (!empty($verificar)) {
                     if (password_verify($clave, $verificar['clave'])) {
                         $_SESSION['correoCliente'] = $verificar['correo'];
                         $_SESSION['nombreCliente'] = $verificar['nombre'];

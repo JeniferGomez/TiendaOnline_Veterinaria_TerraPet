@@ -1,6 +1,8 @@
 const tableLista = document.querySelector('#tableListaProductos tbody');
 document.addEventListener('DOMContentLoaded', function() {
-    getListaProductos();
+    if (tableLista) {
+        getListaProductos();
+    }
 });
 
 function getListaProductos() {
