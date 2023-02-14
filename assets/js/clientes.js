@@ -62,10 +62,11 @@ function registrarPedido(datos) {
     const url = base_url + 'clientes/registrarPedido';
     const http = new XMLHttpRequest();
     http.open('POST', url, true);
-    http.send(JSON.stringify(listaCarrito));
+    http.send(JSON.stringify(datos));
     http.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            const res = JSON.parse(this.responseText);
+            console.log(this.responseText)
+                //const res = JSON.parse(this.responseText);
 
         }
     }

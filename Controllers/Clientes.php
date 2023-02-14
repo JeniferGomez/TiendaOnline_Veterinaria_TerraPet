@@ -139,7 +139,7 @@ class Clientes extends Controller
             $ciudad = $json['purchase_units'][0]['shipping']['address']['address_line_2'];
             $email_user = $_SESSION['correoCliente'];
             $data = $this->model->registrarPedido($id_transaccion, $monto, $estado, $fecha,  $email,  $nombre, $apellido, $direccion, $ciudad, $email_user);
-            
+            print_r($data);
         }
     }
 }
