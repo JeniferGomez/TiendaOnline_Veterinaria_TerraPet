@@ -71,3 +71,5 @@ function registrarPedido(datos) {
         }
     }
 }
+
+//prueba cliente
