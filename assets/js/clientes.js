@@ -1,4 +1,5 @@
 const tableLista = document.querySelector('#tableListaProductos tbody');
+let productosjson = [];
 document.addEventListener('DOMContentLoaded', function() {
     if (tableLista) {
         getListaProductos();
@@ -26,25 +27,43 @@ function getListaProductos() {
                 <td><span class="badge bg-primary">${ producto.cantidad}</span></td>
                 <td>${producto.subTotal}</td>
             </tr>`;
+                //agregar productos para paypal
+                let json = {
+                    "name": producto.nombre,
+                    "unit_amount": {
+                        "currency_code": res.moneda,
+                        "value": producto.precio
+                    },
+                    "quantity": producto.cantidad
+                }
+                productosjson.push(json);
             });
             tableLista.innerHTML = html;
             document.querySelector('#totalProducto').textContent = 'TOTAL A PAGAR: ' + res.moneda + ' ' + res.total;
             let conversion = (res.totalPaypal / 4754);
-            botonPaypal(res.totalPaypal);
+            botonPaypal(res.totalPaypal, res.moneda);
         }
     }
 }
 
-function botonPaypal(total) {
+function botonPaypal(total, moneda) {
 
     paypal.Buttons({
         // Sets up the transaction when a payment button is clicked
         createOrder: (data, actions) => {
             return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        value: total // Can also reference a variable or function
-                    }
+                "purchase_units": [{
+                    "amount": {
+                        "currency_code": moneda,
+                        "value": total,
+                        "breakdown": {
+                            "item_total": {
+                                "currency_code": moneda,
+                                "value": total
+                            }
+                        }
+                    },
+                    "items": productosjson
                 }]
             });
         },

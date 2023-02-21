@@ -12,10 +12,10 @@
                                 <a class="h3 text-dark text-decoration-none mr-3" href="#">Todos</a>
                             </li>
                             <li class="list-inline-item">
-                                <a class="h3 text-dark text-decoration-none mr-3" href="#">Men's</a>
+                                <a class="h3 text-dark text-decoration-none mr-3" href="#">Mascotas</a>
                             </li>
                             <li class="list-inline-item">
-                                <a class="h3 text-dark text-decoration-none" href="#">Women's</a>
+                                <a class="h3 text-dark text-decoration-none" href="#">Granja</a>
                             </li>
                         </ul>
                     </div>
