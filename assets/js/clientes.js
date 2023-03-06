@@ -4,8 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (tableLista) {
         getListaProductos();
     }
-
-
 });
 
 function getListaProductos() {
@@ -47,46 +45,43 @@ function getListaProductos() {
 }
 
 function botonPaypal(total, moneda) {
-
     paypal.Buttons({
-        // Sets up the transaction when a payment button is clicked
-        createOrder: (data, actions) => {
-            return actions.order.create({
-                "purchase_units": [{
-                    "amount": {
-                        "currency_code": moneda,
-                        "value": total,
-                        "breakdown": {
-                            "item_total": {
-                                "currency_code": moneda,
-                                "value": total
-                            }
-                        }
-                    },
-                    "items": productosjson
-                }]
-            });
+        // Order is created on the server and the order id is returned
+        createOrder() {
+            return fetch("/my-server/create-paypal-order", {
+                    method: "post",
+                    // use the "body" param to optionally pass additional order information
+                    // like product skus and quantities
+                    body: JSON.stringify({
+                        cart: [{
+                            sku: "YOUR_PRODUCT_STOCK_KEEPING_UNIT",
+                            quantity: "YOUR_PRODUCT_QUANTITY",
+                        }, ],
+                    }),
+                })
+                .then((response) => response.json())
+                .then((order) => order.id);
         },
-        // Finalize the transaction after payer approval
-        onApprove: (data, actions) => {
-            return actions.order.capture().then(function(orderData) {
-                registrarPedido(orderData);
-
-            });
+        // Finalize the transaction on the server after payer approval
+        onApprove(data) {
+            return fetch("/my-server/capture-paypal-order", {
+                    method: "post",
+                    body: JSON.stringify({
+                        orderID: data.orderID
+                    })
+                })
+                .then((response) => response.json())
+                .then((orderData) => {
+                    // Successful capture! For dev/demo purposes:
+                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                    const transaction = orderData.purchase_units[0].payments.captures[0];
+                    alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+                    // When ready to go live, remove the alert and show a success message within this page. For example:
+                    // const element = document.getElementById('paypal-button-container');
+                    // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                    // Or go to another URL:  window.location.href = 'thank_you.html';
+                });
         }
     }).render('#paypal-button-container');
-}
 
-function registrarPedido(datos) {
-    const url = base_url + 'clientes/registrarPedido';
-    const http = new XMLHttpRequest();
-    http.open('POST', url, true);
-    http.send(JSON.stringify(datos));
-    http.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText)
-                //const res = JSON.parse(this.responseText);
-
-        }
-    }
 }

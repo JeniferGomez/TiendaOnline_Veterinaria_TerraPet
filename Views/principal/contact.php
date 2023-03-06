@@ -14,24 +14,24 @@
     <!-- Start Contact -->
     <div class="container py-5">
         <div class="row py-5">
-            <form class="col-md-9 m-auto" method="post" role="form">
+            <form class="col-md-9 m-auto" method="post" role="form" id="frmContactos">
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
-                        <label for="inputname">Nombre</label>
-                        <input type="text" class="form-control mt-1" id="name" name="name" placeholder="Nombre">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control mt-1" id="nombre" name="name" placeholder="Nombre">
                     </div>
                     <div class="form-group col-md-6 mb-3">
-                        <label for="inputemail">Correo</label>
+                        <label for="email">Correo</label>
                         <input type="email" class="form-control mt-1" id="email" name="email" placeholder="Correo">
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="inputsubject">Telefono</label>
-                    <input type="text" class="form-control mt-1" id="subject" name="subject" placeholder="Telefono">
+                    <label for="telefono">Telefono</label>
+                    <input type="text" class="form-control mt-1" id="telefono" name="subject" placeholder="Telefono">
                 </div>
                 <div class="mb-3">
                     <label for="inputmessage">Razón de la Cita o Consulta</label>
-                    <textarea class="form-control mt-1" id="message" name="message" placeholder="Escribe tu motivo de consulta"
+                    <textarea class="form-control mt-1" id="message" placeholder="Escribe tu motivo de consulta"
                         rows="8"></textarea>
                 </div>
                 <div class="row">
@@ -45,6 +45,8 @@
     <!-- End Contact -->
 
     <?php include_once 'Views/template-principal/footer.php';?>
+    <script src="<?php echo BASE_URL . 'assets/js/ckeditor.js'; ?>"></script>
+    <script src="<?php echo BASE_URL . 'assets/js/modulos/contactos.js'; ?>"></script>
 </body>
 
 </html>
