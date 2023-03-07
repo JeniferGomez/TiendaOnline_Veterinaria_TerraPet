@@ -14,6 +14,8 @@ const claveLogin = document.querySelector('#claveLogin');
 
 const modalLogin = new bootstrap.Modal(document.getElementById('modalLogin'))
 
+const inputBusqueda = document.querySelector('#inputModalSearch');
+
 document.addEventListener('DOMContentLoaded', function() {
     btnRegister.addEventListener('click', function() {
         frmLogin.classList.add('d-none');
@@ -60,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
             let formData = new FormData();
             formData.append('correoLogin', correoLogin.value);
             formData.append('claveLogin', claveLogin.value);
-            ////////////
             const url = base_url + 'clientes/loginDirecto';
             const http = new XMLHttpRequest();
             http.open('POST', url, true);
@@ -79,6 +80,47 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
 
+    });
+
+    //busqueda de productos
+    inputBusqueda.addEventListener('keyup', function(e) {
+        const url = base_url + 'principal/busqueda/' + e.target.value;
+        const http = new XMLHttpRequest();
+        http.open('POST', url, true);
+        http.send();
+        http.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+                const res = JSON.parse(this.responseText);
+                let html = '';
+                res.forEach(producto => {
+                    html += `        <div class="col-12 col-md-4 mb-4">
+<div class="card h-100">
+  <a href="${ base_url + 'principal/detail/' + $producto.id }">
+    <img src="${ producto.imagen }" class="card-img-top" alt="${ producto.nombre }">
+  </a>
+  <div class="card-body">
+    <ul class="list-unstyled d-flex justify-content-between">
+      <li>
+        <i class="text-warning fa fa-star"></i>
+        <i class="text-warning fa fa-star"></i>
+        <i class="text-warning fa fa-star"></i>
+        <i class="text-muted fa fa-star"></i>
+        <i class="text-muted fa fa-star"></i>
+      </li>
+      <li class="text-muted text-right">${ producto.precio}</li>
+    </ul>
+    <a href="${ base_url + 'principal/detail/' + $producto.id }" class="h2 text-decoration-none text-dark">${ producto.nombre}</a>
+    <p class="card-text">
+    ${ producto.descripcion}
+    </p>
+  </div>
+</div>
+</div>`;
+                });
+                document.querySelector('#resultBusqueda').innerHTML = html;
+            }
+        }
     });
 });
 

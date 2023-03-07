@@ -104,11 +104,11 @@
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <i class="fas fa-fw fa-search text-dark mr-2"></i>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#" id="verCarrito">
+                    <a class="nav-icon position-relative text-decoration-none " href="#" id="verCarrito">
                         <i class="fas fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-util text-white" id="btnCantidadCarrito">0</span>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="<?php echo BASE_URL . 'principal/deseo' ?>">
+                    <a class="nav-icon position-relative text-decoration-none " href="<?php echo BASE_URL . 'principal/deseo' ?>">
                         <i class="fas fa-fw fa-heart text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-util text-white" id="btnCantidadDeseo">0</span>
                     </a>
@@ -143,5 +143,8 @@
                     </button>
                 </div>
             </form>
+            <div class="row" id="resultBusqueda">
+
+            </div>
         </div>
     </div>

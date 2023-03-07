@@ -37,6 +37,12 @@ class PrincipalModel extends Query{
         $sql = "SELECT * FROM productos WHERE id_categoria = $id_categoria AND id != $id_producto ORDER BY RAND() LIMIT 20";
         return $this -> selectAll($sql);
     }
+    //busqueda de productos
+    public function getBusqueda($valor)
+    {
+        $sql = "SELECT * FROM productos WHERE nombre LIKE '%". $valor."%' OR descripcion LIKE '%". $valor."%' LIMIT 20";
+        return $this -> selectAll($sql);
+    }
 
 }
 
