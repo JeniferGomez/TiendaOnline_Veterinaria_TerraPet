@@ -18,16 +18,16 @@
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control mt-1" id="nombre" name="name" placeholder="Nombre">
+                        <input type="text" class="form-control mt-1" id="nombre" name="name" placeholder="Nombre" required>
                     </div>
                     <div class="form-group col-md-6 mb-3">
                         <label for="email">Correo</label>
-                        <input type="email" class="form-control mt-1" id="email" name="email" placeholder="Correo">
+                        <input type="email" class="form-control mt-1" id="email" name="email" placeholder="Correo" required>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="telefono">Telefono</label>
-                    <input type="text" class="form-control mt-1" id="telefono" name="subject" placeholder="Telefono">
+                    <input type="text" class="form-control mt-1" id="telefono" name="subject" placeholder="Telefono" required>
                 </div>
                 <div class="mb-3">
                     <label for="inputmessage">Razón de la Cita o Consulta</label>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="row">
                     <div class="col text-end mt-2">
-                        <button type="submit" class="btn btn-success btn-lg px-3">Hablémos</button>
+                        <button type="submit" class="btn btn-success btn-lg px-3" id="btnContactos">Hablémos</button>
                     </div>
                 </div>
             </form>
