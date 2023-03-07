@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    
+
     <title><?php echo TITLE . ' - ' . $data['title']; ?></title>
     <link rel="apple-touch-icon" sizes="57x57" href="<?php echo BASE_URL; ?>assets/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="<?php echo BASE_URL; ?>assets/favicon/apple-icon-60x60.png">
@@ -38,8 +38,8 @@
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL . 'assets/css/slick/slick.css'; ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL . 'assets/css/slick/slick-theme.css'; ?>">
 
-<!-- Replace "test" with your own sandbox Business account app client ID -->
-<script src="https://www.paypal.com/sdk/js?client-id=<?php echo CLIENT_ID;?>&currency=USD"></script>
+    <!-- Replace "test" with your own sandbox Business account app client ID -->
+    <script src="https://www.paypal.com/sdk/js?client-id=<?php echo CLIENT_ID; ?>&currency=USD"></script>
 
 </head>
 
@@ -69,7 +69,7 @@
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-        <img class="img-fluid rounded-circle" src="<?php echo BASE_URL . 'assets/img/logo.png'; ?>" alt="" width="50" href="<?php echo BASE_URL; ?>">
+            <img class="img-fluid rounded-circle" src="<?php echo BASE_URL . 'assets/img/logo.png'; ?>" alt="" width="50" href="<?php echo BASE_URL; ?>">
             <a class="navbar-brand text-util logo h3 align-self-center" href="<?php echo BASE_URL; ?>">
                 <?php echo TITLE; ?>
             </a>
@@ -113,14 +113,14 @@
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-util text-white" id="btnCantidadDeseo">0</span>
                     </a>
                     <?php if (!empty($_SESSION['correoCliente'])) { ?>
-                        <a class="nav-icon position-relative text-decoration-none" href="<?php echo BASE_URL . 'clientes'?>">
-                        <img class="img-thumbnail" src="<?php echo BASE_URL . 'assets/img/clientes/default.png' ?>" alt="-LOGO-CLIENTE" width="50">
-                    </a>
-                        <?php } else { ?>
-                            <a class="nav-icon position-relative text-decoration-none" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">
-                        <i class="fas fa-fw fa-user text-dark mr-3"></i>
-                    </a>
-                            <?php } ?>
+                        <a class="nav-icon position-relative text-decoration-none" href="<?php echo BASE_URL . 'clientes' ?>">
+                            <img class="img-thumbnail" src="<?php echo BASE_URL . 'assets/img/clientes/default.png' ?>" alt="-LOGO-CLIENTE" width="50">
+                        </a>
+                    <?php } else { ?>
+                        <a class="nav-icon position-relative text-decoration-none" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">
+                            <i class="fas fa-fw fa-user text-dark mr-3"></i>
+                        </a>
+                    <?php } ?>
 
                 </div>
             </div>
@@ -135,16 +135,16 @@
             <div class="w-100 pt-1 mb-5 text-right">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
+            <div class="modal-content modal-body border-0 p-0">
                 <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Buscar ...">
                     <button type="submit" class="input-group-text bg-util text-light">
                         <i class="fa fa-fw fa-search text-white"></i>
                     </button>
                 </div>
-            </form>
-            <div class="row" id="resultBusqueda">
+                <div class="row" id="resultBusqueda">
 
+                </div>
             </div>
         </div>
     </div>
