@@ -12,8 +12,16 @@ class Admin extends Controller
     }
     public function validar()
     {
-       // if (issets($_POST)) {
-       //     # code...
-       // }
+        if (isset($_POST['email']) && isset($_POST['clave'])) {
+            if (empty($_POST['email']) || empty($_POST['clave'])) {
+                $respuesta = array('msg' => 'Todos los campos son requeridos', 'icono' => 'warning');
+            }else{
+
+            }
+        }else{
+            $respuesta = array('msg' => 'Error desconocido', 'icono' => 'error');
+        }
+        echo json_encode($respuesta);
+        die();
     }
 }
