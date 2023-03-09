@@ -35,7 +35,7 @@
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                             <a class="small" href="password.html">Has olvidado tu contraseña?</a>
-                                            <button class="btn btn-primary" type="button" onclick="enviarFormulario()">Login</button>
+                                            <button class="btn btn-primary" type="button">Login</button>
                                         </div>
                                     </form>
                                 </div>
