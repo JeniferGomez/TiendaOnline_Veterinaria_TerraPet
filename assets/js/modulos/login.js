@@ -60,3 +60,4 @@ function enviarFormulario() {
     // Enviar el formulario
     document.getElementById('formulario').submit();
 }
+//control de version
