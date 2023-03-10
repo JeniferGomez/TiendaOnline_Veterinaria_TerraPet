@@ -34,30 +34,26 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 });
 
-function enviarFormulario() {
-    // Verificar si los campos requeridos están llenos
-    if (email.value.trim() === '') {
-        Swal.fire({
-            icon: 'warning',
-            title: 'Aviso',
-            text: 'Por favor, ingrese su correo electrónico',
-            confirmButtonText: 'OK'
-        });
-        email.focus();
-        return false;
+$.ajax({
+    url: 'Admin.php',
+    type: 'POST',
+    data: { email: email, clave: clave },
+    dataType: 'json',
+    success: function(respuesta) {
+        if (respuesta.icono == 'success') {
+            Swal.fire({
+                icon: respuesta.icono,
+                title: respuesta.msg,
+                showConfirmButton: false,
+                timer: 1500
+            }).then((result) => {
+                window.location.href = 'home.php';
+            });
+        } else {
+            Swal.fire({
+                icon: respuesta.icono,
+                title: respuesta.msg
+            });
+        }
     }
-    if (clave.value.trim() === '') {
-        Swal.fire({
-            icon: 'warning',
-            title: 'Aviso',
-            text: 'Por favor, ingrese su contraseña',
-            confirmButtonText: 'OK'
-        });
-        clave.focus();
-        return false;
-    }
-
-    // Enviar el formulario
-    document.getElementById('formulario').submit();
-}
-//control de version
+});

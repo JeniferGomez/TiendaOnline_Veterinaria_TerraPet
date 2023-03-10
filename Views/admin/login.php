@@ -35,7 +35,7 @@
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                             <a class="small" href="password.html">Has olvidado tu contraseña?</a>
-                                            <button class="btn btn-primary" type="button">Login</button>
+                                            <button class="btn btn-primary" type="submit">Login</button>
                                         </div>
                                     </form>
                                 </div>
@@ -63,9 +63,14 @@
     <script>
         const base_url = '<?php echo BASE_URL; ?>';
     </script>
+    <script src="<?php echo BASE_URL; ?>assets/js/sweetalert2.all.min.js"></script>
     <script src="<?php echo BASE_URL; ?>assets/js/modulos/login.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+    <!-- Incluir los archivos CSS y JS de Toastr -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
 
 </body>
 

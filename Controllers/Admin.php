@@ -33,11 +33,12 @@ class Admin extends Controller
             $respuesta = array('msg' => 'Error desconocido', 'icono' => 'error');
         }
         echo json_encode($respuesta);
+        
         die();
     }
 
     public function home()
     {
-        print($_SESSION);
+        print_r($_SESSION);
     }
 }
