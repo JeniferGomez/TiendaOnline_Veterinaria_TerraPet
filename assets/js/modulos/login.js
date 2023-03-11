@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             window.location = base_url + 'admin/home';
                         }, 2000);
                     }
-                    alert(res.msg, res.icono);
+                    alertas(res.msg, res.icono);
                 }
             }
         }
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function alertas(msg, icono) {
     Swal.fire(
-        'Aviso?',
+        'Aviso!',
         msg.toUpperCase(),
         icono
     )

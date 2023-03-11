@@ -15,32 +15,31 @@ class Admin extends Controller
     {
         if (isset($_POST['email']) && isset($_POST['clave'])) {
             if (empty($_POST['email']) || empty($_POST['clave'])) {
-                $respuesta = array('msg' => 'Todos los campos son requeridos', 'icono' => 'warning');
+                $mensaje = array('msg' => 'Todos los campos son requeridos', 'icono' => 'warning');
             } else {
                 $data = $this->model->getUsuario($_POST['email']);
                 if (empty($data)) {
-                    $respuesta = array('msg' => 'El correo no existe', 'icono' => 'warning');
+                    $mensaje = array('msg' => 'El correo no existe', 'icono' => 'warning');
                 } else {
                     if (password_verify($_POST['clave'], $data['clave'])) {
                         $_SESSION['email'] = $data['correo'];
-                        $respuesta = array('msg' => 'Datos correctos', 'icono' => 'success');
+                        $mensaje = array('msg' => 'Datos correctos', 'icono' => 'success');
                     } else {
-                        $respuesta = array('msg' => 'Contraseña incorrecta', 'icono' => 'warning');
+                        $mensaje = array('msg' => 'Contraseña incorrecta', 'icono' => 'warning');
                     }
                 }
             }
         } else {
-            $respuesta = array('msg' => 'Error desconocido', 'icono' => 'error');
+            $mensaje = array('msg' => 'Error desconocido', 'icono' => 'error');
         }
-        echo json_encode($respuesta, JSON_UNESCAPED_UNICODE);
+        echo json_encode($mensaje, JSON_UNESCAPED_UNICODE);
         
         die();
     }
 
-    
-
     public function home()
     {
-        print_r($_SESSION);
+        $data['title'] = 'Panel Administrativo';
+        $this->views->getView('admin/administracion', "index", $data);
     }
 }
