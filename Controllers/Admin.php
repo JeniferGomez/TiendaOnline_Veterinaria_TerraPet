@@ -32,10 +32,12 @@ class Admin extends Controller
         } else {
             $respuesta = array('msg' => 'Error desconocido', 'icono' => 'error');
         }
-        echo json_encode($respuesta);
+        echo json_encode($respuesta, JSON_UNESCAPED_UNICODE);
         
         die();
     }
+
+    
 
     public function home()
     {

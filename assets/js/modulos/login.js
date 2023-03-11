@@ -34,26 +34,10 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 });
 
-$.ajax({
-    url: 'Admin.php',
-    type: 'POST',
-    data: { email: email, clave: clave },
-    dataType: 'json',
-    success: function(respuesta) {
-        if (respuesta.icono == 'success') {
-            Swal.fire({
-                icon: respuesta.icono,
-                title: respuesta.msg,
-                showConfirmButton: false,
-                timer: 1500
-            }).then((result) => {
-                window.location.href = 'home.php';
-            });
-        } else {
-            Swal.fire({
-                icon: respuesta.icono,
-                title: respuesta.msg
-            });
-        }
-    }
-});
+function alertas(msg, icono) {
+    Swal.fire(
+        'Aviso?',
+        msg.toUpperCase(),
+        icono
+    )
+}
