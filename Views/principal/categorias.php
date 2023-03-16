@@ -1,4 +1,4 @@
-<?php include_once 'Views/template-principal/header.php';?>
+<?php include_once 'Views/template/header-principal.php';?>
 
     <!-- Start Content -->
     <div class="container py-5">
@@ -84,7 +84,7 @@
     </div>
     <!-- End Content -->
 
-    <?php include_once 'Views/template-principal/footer.php';?>
+    <?php include_once 'Views/template/footer-principal.php';?>
     </body>
     
     </html>

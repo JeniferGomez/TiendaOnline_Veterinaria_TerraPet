@@ -1,4 +1,4 @@
-<?php include_once 'Views/template-principal/header.php';?>
+<?php include_once 'Views/template/header-principal.php';?>
 
 
     <!-- Start Content Page -->
@@ -44,7 +44,7 @@
     </div>
     <!-- End Contact -->
 
-    <?php include_once 'Views/template-principal/footer.php';?>
+    <?php include_once 'Views/template/footer-principal.php';?>
     <script src="<?php echo BASE_URL . 'assets/js/ckeditor.js'; ?>"></script>
     <script src="<?php echo BASE_URL . 'assets/js/modulos/contactos.js'; ?>"></script>
 </body>
