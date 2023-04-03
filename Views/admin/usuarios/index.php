@@ -28,6 +28,10 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="<?php echo BASE_URL; ?>assets/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
+
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="<?php echo BASE_URL; ?>assets/js/modulos/usuarios.js"></script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -84,7 +88,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-hover" style="width: 1000">
+                            <table class="table table-bordered table-striped table-hover" style="width: 1000" id="tblUsuarios">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -128,7 +132,10 @@
         const base_url = '<?php echo BASE_URL; ?>';
     </script>
     <script type="text/javascript" src="<?php BASE_URL . 'assets/DataTables/datatables.min.js'; ?>"></script>
-    <script src="<?php BASE_URL . 'assets/js/clientes.js'; ?>"></script>
+    <link href="DataTables/datatables.min.css" rel="stylesheet" />
+
+    <script src="<?php echo BASE_URL; ?>DataTables/datatables.min.js></script>
+    <script src="<?php BASE_URL . 'assets/js/modulos/usuarios.js'; ?>"></script>
 </body>
 
 </html>

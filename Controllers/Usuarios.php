@@ -7,8 +7,16 @@ class Usuarios extends Controller
     }
     public function index()
     {
-        $data['title'] = 'Ususario';
+        $data['title'] = 'Usuarios';
         $this->views->getView('admin/usuarios', "index", $data);
     }
+    public function listar()
+    {
+        $data = $this->model->getUsuarios();
+        header('Content-Type: application/json');
+        echo json_encode($data);
+        die();
+    }
+    
     
 }
