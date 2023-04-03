@@ -18,5 +18,5 @@ class Usuarios extends Controller
         die();
     }
     
-    
 }
+?>

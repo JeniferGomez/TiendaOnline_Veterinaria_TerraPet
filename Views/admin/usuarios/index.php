@@ -119,6 +119,12 @@
             </footer>
         </div>
     </div>
+    <script src="<?php echo BASE_URL; ?>assets/js/scripts.js"></script>
+    <script src="<?php echo BASE_URL; ?>assets/js/modulos/usuarios.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.6.0/dt-1.11.3/datatables.min.css" />
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.6.0/dt-1.11.3/datatables.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="<?php echo BASE_URL; ?>assets/demo/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -135,7 +141,7 @@
     <link href="DataTables/datatables.min.css" rel="stylesheet" />
 
     <script src="<?php echo BASE_URL; ?>DataTables/datatables.min.js></script>
-    <script src="<?php BASE_URL . 'assets/js/modulos/usuarios.js'; ?>"></script>
+    <script src=" <?php BASE_URL . 'assets/js/modulos/usuarios.js'; ?>"></script>
 </body>
 
 </html>

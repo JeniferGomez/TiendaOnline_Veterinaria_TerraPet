@@ -1,18 +1,13 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const table = new simpleDatatables.DataTable("#tblUsuarios", {
-        columns: [
-            { select: 0 },
-            { select: 1 },
-            { select: 2 },
-            { select: 3 },
-            { select: 4 }
-        ],
-        data: {
-            type: "ajax",
-            url: "<?php echo BASE_URL; ?>Controllers/Usuarios/listar",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }
-    });
-});
+$(document).ready(function() {
+    var table = $('#usuariosTable').DataTable( {
+      "ajax": "usuarios/listar",
+      "columns": [
+        { "data": "id" },
+        { "data": "nombres" },
+        { "data": "apellidos" },
+        { "data": "correo" },
+        { "data": "perfil" }
+      ]
+    } );
+  });
+  
