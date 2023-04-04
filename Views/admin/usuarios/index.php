@@ -8,8 +8,6 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title><?php echo TITLE . ' - ' . $data['title']; ?></title>
-    <link rel="stylesheet" href="<?php echo BASE_URL . 'assets/css/bootstrap.min.css'; ?>">
-    <link rel="stylesheet" href="<?php echo BASE_URL . 'assets/css/templatemo.css'; ?>">
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="<?php echo BASE_URL; ?>assets/css/indexAdmin/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -31,9 +29,23 @@
     <meta name="msapplication-TileImage" content="<?php echo BASE_URL; ?>assets/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
+    <link rel="apple-touch-icon" href="<?php echo BASE_URL . 'assets/img/apple-icon.png'; ?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo BASE_URL . 'assets/img/favicon.ico'; ?>">
+
+    <link rel="stylesheet" href="<?php echo BASE_URL . 'assets/css/bootstrap.min.css'; ?>">
+    <link rel="stylesheet" href="<?php echo BASE_URL . 'assets/css/templatemo.css'; ?>">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+
+    <!-- Slick -->
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL . 'assets/css/slick/slick.css'; ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL . 'assets/css/slick/slick-theme.css'; ?>">
+
+    <!-- Replace "test" with your own sandbox Business account app client ID -->
+    <script src="https://www.paypal.com/sdk/js?client-id=<?php echo CLIENT_ID; ?>&currency=USD"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="<?php echo BASE_URL;?>assets/js/bootstrap.min.js"></script>
-    <script src="<?php echo BASE_URL; ?>assets/js/modulos/usuarios.js"></script>
     <style>
         table {
             border-collapse: collapse;
@@ -162,30 +174,22 @@
             </footer>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="<?php echo BASE_URL; ?>assets/demo/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="<?php echo BASE_URL; ?>assets/demo/chart-area-demo.js"></script>
+    <script src="<?php echo BASE_URL; ?>assets/demo/chart-bar-demo.js"></script>
     <script src="<?php echo BASE_URL; ?>assets/js/jquery-3.6.0.min.js"></script>
     <script src="<?php echo BASE_URL; ?>assets/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="<?php echo BASE_URL; ?>assets/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo BASE_URL; ?>assets/js/templatemo.js"></script>
     <script src="<?php echo BASE_URL; ?>assets/js/all.min.js"></script>
     <script src="<?php echo BASE_URL; ?>assets/js/sweetalert2.all.min.js"></script>
-    <script src="<?php echo BASE_URL; ?>assets/js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="<?php echo BASE_URL; ?>assets/demo/scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="<?php echo BASE_URL; ?>assets/demo/chart-area-demo.js"></script>
-    <script src="<?php echo BASE_URL; ?>assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-    <script src="<?php echo BASE_URL; ?>assets/demo/datatables-simple-demo.js"></script>
-    <script src="<?php echo BASE_URL; ?>assets/js/all.min.js"></script>
-    <script src="<?php echo BASE_URL; ?>assets/js/sweetalert2.all.min.js"></script>
     <script>
         const base_url = '<?php echo BASE_URL; ?>';
     </script>
-    <script type="text/javascript" src="<?php BASE_URL . 'assets/DataTables/datatables.min.js'; ?>"></script>
-    <link href="DataTables/datatables.min.css" rel="stylesheet" />
+    <script src="<?php echo BASE_URL; ?>assets/js/modulos/usuarios.js"></script>
 
-    <script src="<?php echo BASE_URL; ?>DataTables/datatables.min.js></script>
-    <script src=" <?php BASE_URL . 'assets/js/modulos/usuarios.js'; ?>"></script>
 </body>
 
 </html>
