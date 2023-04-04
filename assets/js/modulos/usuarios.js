@@ -1,35 +1,28 @@
-const tableListaUsuarios = document.querySelector('#tblUsuarios tbody');
+$(document).ready(function () {
+  $.ajax({
+    url: "Usuarios/listar",
+    dataType: "json",
+    success: function (data) {
+      var table =
+        "<table><thead><tr><th>ID</th><th>Nombres</th><th>Apellidos</th><th>Correo</th><th>Perfil</th></tr></thead><tbody>";
+      data.forEach(function (item) {
+        table += `<tr><td>${item.id}</td><td>${item.nombres}</td><td>${item.apellidos}</td><td>${item.correo}</td><td>${item.perfil}</td></tr>`;
+      });
+      table +=
+        "</tbody><tfoot><tr><td colspan='5'>Total de Usuarios: " +
+        data.length +
+        "</td></tr></tfoot></table>";
+      $("#table-container").html(table);
+    },
+  });
+});
 
-//ver usuarios
-const myModal = new bootstrap.Modal(document.getElementById('myModal'))
+const nuevo = document.querySelector("#nuevo_registro");
+const myModal = new bootstrap.Modal(document.getElementById('nuevoModal'))
 
-let listaUsuarios;
-document.addEventListener('DOMContentLoaded', function() {
-    if (localStorage.getItem('listaUsuarios') != null) {
-      listaUsuarios = JSON.parse(localStorage.getItem('listaUsuarios'));
-    }
-})
-
-//ver lista
-function getListaUsuarios() {
-    const url = base_url + 'Usuarios/listar';
-    const http = new XMLHttpRequest();
-    http.open('POST', url, true);
-    http.send(JSON.stringify(listaUsuarios));
-    http.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            const res = JSON.parse(this.responseText);
-            let html = '';
-            res.productos.forEach(producto => {
-                html += `<tr>
-                <td>${usuarios.id}</td>
-                <td>${usuarios.nombres}</td>
-                <td>${usuarios.apellidos}</td>
-                <td>${usuarios.correo}</td>
-                <td>${usuarios.perfil}</td>
-            </tr>`;
-            });
-            tableListaUsuarios.innerHTML = html;
-        }
-    }
-}
+document.addEventListener("DOMContentLoaded", function () {
+  //levantar modal
+  nuevo.addEventListener("click", function () {
+    myModal.show();
+  });
+});

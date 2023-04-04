@@ -8,6 +8,8 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title><?php echo TITLE . ' - ' . $data['title']; ?></title>
+    <link rel="stylesheet" href="<?php echo BASE_URL . 'assets/css/bootstrap.min.css'; ?>">
+    <link rel="stylesheet" href="<?php echo BASE_URL . 'assets/css/templatemo.css'; ?>">
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="<?php echo BASE_URL; ?>assets/css/indexAdmin/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -30,39 +32,26 @@
     <meta name="theme-color" content="#ffffff">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<style>
-		table {
-			border-collapse: collapse;
-			width: 100%;
-		}
+    <script src="<?php echo BASE_URL;?>assets/js/bootstrap.min.js"></script>
+    <script src="<?php echo BASE_URL; ?>assets/js/modulos/usuarios.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-		th, td {
-			text-align: left;
-			padding: 8px;
-			border: 1px solid #ddd;
-		}
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
 
-		th {
-			background-color: #4CAF50;
-			color: white;
-		}
-	</style>
-	<script>
-		$(document).ready(function() {
-			$.ajax({
-				url: "Usuarios/listar",
-				dataType: "json",
-				success: function(data) {
-					var table = "<table><thead><tr><th>ID</th><th>Nombres</th><th>Apellidos</th><th>Correo</th><th>Perfil</th></tr></thead><tbody>";
-					data.forEach(function(item) {
-						table += `<tr><td>${item.id}</td><td>${item.nombres}</td><td>${item.apellidos}</td><td>${item.correo}</td><td>${item.perfil}</td></tr>`;
-					});
-					table += "</tbody><tfoot><tr><td colspan='5'>Total de Usuarios: " + data.length + "</td></tr></tfoot></table>";
-					$("#table-container").html(table);
-				}
-			});
-		});
-	</script>
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
 </head>
 
 <body class="sb-nav-fixed">
@@ -118,8 +107,43 @@
             <main>
                 <div class="card">
                     <div class="card-body">
+                        <button class="btn btn-primary" type="button" id="nuevo_registro">Nuevo</button>
                         <div class="table-responsive">
                             <div id="table-container"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="nuevoModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="titleModal"></h5>
+                                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                </button>
+                            </div>
+                            <form id="frmRegistro">
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="nombre">Nombres</label>
+                                        <input id="nombre" class="form-control" type="text" name="nombre">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="apellido">Apellidos</label>
+                                        <input id="apellido" class="form-control" type="text" name="apellido">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="correo">Correo</label>
+                                        <input id="correo" class="form-control" type="text" name="correo">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="clave">Contraseña</label>
+                                        <input id="clave" class="form-control" type="text" name="clave">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" type="submit">Registrar</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -138,6 +162,12 @@
             </footer>
         </div>
     </div>
+    <script src="<?php echo BASE_URL; ?>assets/js/jquery-3.6.0.min.js"></script>
+    <script src="<?php echo BASE_URL; ?>assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="<?php echo BASE_URL; ?>assets/js/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo BASE_URL; ?>assets/js/templatemo.js"></script>
+    <script src="<?php echo BASE_URL; ?>assets/js/all.min.js"></script>
+    <script src="<?php echo BASE_URL; ?>assets/js/sweetalert2.all.min.js"></script>
     <script src="<?php echo BASE_URL; ?>assets/js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="<?php echo BASE_URL; ?>assets/demo/scripts.js"></script>
