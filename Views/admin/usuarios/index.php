@@ -119,7 +119,7 @@
             <main>
                 <div class="card">
                     <div class="card-body">
-                        <button class="btn btn-primary" type="button" id="nuevo_registro">Nuevo</button>
+                        <button class="btn btn-primary mb-2" type="button" id="nuevo_registro">Nuevo</button>
                         <div class="table-responsive">
                             <div id="table-container"></div>
                         </div>
@@ -128,32 +128,33 @@
                 <div id="nuevoModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
-                            <div class="modal-header">
+                            <div class="modal-header bg-primary">
                                 <h5 class="modal-title" id="titleModal"></h5>
                                 <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                 </button>
                             </div>
                             <form id="frmRegistro">
                                 <div class="modal-body">
-                                    <div class="form-group">
+                                    <div class="form-group mb-2">
                                         <label for="nombre">Nombres</label>
-                                        <input id="nombre" class="form-control" type="text" name="nombre">
+                                        <input id="nombre" class="form-control" type="text" name="nombre" placeholder="Nombres" required>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mb-2">
                                         <label for="apellido">Apellidos</label>
-                                        <input id="apellido" class="form-control" type="text" name="apellido">
+                                        <input id="apellido" class="form-control" type="text" name="apellido" placeholder="Apellidos" required>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mb-2">
                                         <label for="correo">Correo</label>
-                                        <input id="correo" class="form-control" type="text" name="correo">
+                                        <input id="correo" class="form-control" type="email" name="correo" placeholder="Correo Electronico" required>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mb-2">
                                         <label for="clave">Contraseña</label>
-                                        <input id="clave" class="form-control" type="text" name="clave">
+                                        <input id="clave" class="form-control" type="password" name="clave" placeholder="Contraseña" require>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button class="btn btn-primary" type="submit">Registrar</button>
+                                    <button type="submit" class="btn btn-primary" name="register" onclick="location.reload()">Registrar</button>
+                                    <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancelar</button>
                                 </div>
                             </form>
                         </div>
@@ -189,7 +190,6 @@
         const base_url = '<?php echo BASE_URL; ?>';
     </script>
     <script src="<?php echo BASE_URL; ?>assets/js/modulos/usuarios.js"></script>
-
 </body>
 
 </html>
