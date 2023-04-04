@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Dashboard - SB Admin</title>
+    <title><?php echo TITLE . ' - ' . $data['title']; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="<?php echo BASE_URL; ?>assets/css/indexAdmin/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -29,9 +29,40 @@
     <meta name="msapplication-TileImage" content="<?php echo BASE_URL; ?>assets/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-    <script src="<?php echo BASE_URL; ?>assets/js/modulos/usuarios.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<style>
+		table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		th, td {
+			text-align: left;
+			padding: 8px;
+			border: 1px solid #ddd;
+		}
+
+		th {
+			background-color: #4CAF50;
+			color: white;
+		}
+	</style>
+	<script>
+		$(document).ready(function() {
+			$.ajax({
+				url: "Usuarios/listar",
+				dataType: "json",
+				success: function(data) {
+					var table = "<table><thead><tr><th>ID</th><th>Nombres</th><th>Apellidos</th><th>Correo</th><th>Perfil</th></tr></thead><tbody>";
+					data.forEach(function(item) {
+						table += `<tr><td>${item.id}</td><td>${item.nombres}</td><td>${item.apellidos}</td><td>${item.correo}</td><td>${item.perfil}</td></tr>`;
+					});
+					table += "</tbody><tfoot><tr><td colspan='5'>Total de Usuarios: " + data.length + "</td></tr></tfoot></table>";
+					$("#table-container").html(table);
+				}
+			});
+		});
+	</script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -88,19 +119,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-hover" style="width: 1000" id="tblUsuarios">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Nombres</th>
-                                        <th>Apellidos</th>
-                                        <th>Correo</th>
-                                        <th>Foto</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
+                            <div id="table-container"></div>
                         </div>
                     </div>
                 </div>
@@ -120,11 +139,6 @@
         </div>
     </div>
     <script src="<?php echo BASE_URL; ?>assets/js/scripts.js"></script>
-    <script src="<?php echo BASE_URL; ?>assets/js/modulos/usuarios.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.6.0/dt-1.11.3/datatables.min.css" />
-
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.6.0/dt-1.11.3/datatables.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="<?php echo BASE_URL; ?>assets/demo/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
