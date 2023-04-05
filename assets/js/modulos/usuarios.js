@@ -42,12 +42,15 @@ document.addEventListener("DOMContentLoaded", function () {
         const res = JSON.parse(this.responseText);
         if (res.icono == "success") {
           myModal.hide();
-          tblUsuario.ajax.reload();
-          // setTimeout(function() {
-          //   location.reload();
-          // }, 3000); // La página se actualizará después de 3 segundos (3000 milisegundos)
-        }
-        alertas(res.msg, res.icono);
+          Swal.fire("Éxito", res.msg, "success").then(() => {
+            tblUsuario.ajax.reload();
+            setTimeout(function () {
+              location.reload();
+            }, 3000);
+          });
+        } else {
+          alertas(res.msg, res.icono);
+        }        
       }
     };
   });
