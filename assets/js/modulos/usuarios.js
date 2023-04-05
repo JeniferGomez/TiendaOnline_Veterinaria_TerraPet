@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
           });
         } else {
           alertas(res.msg, res.icono);
-        }        
+        }
       }
     };
   });
