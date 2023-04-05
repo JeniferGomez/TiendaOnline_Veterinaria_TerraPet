@@ -156,7 +156,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary" name="register">Registrar</button>
+                                    <button type="submit" class="btn btn-primary" name="register" id="btnAccion">Registrar</button>
                                     <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancelar</button>
                                 </div>
                             </form>

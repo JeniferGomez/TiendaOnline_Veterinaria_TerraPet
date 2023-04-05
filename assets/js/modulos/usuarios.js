@@ -21,11 +21,16 @@ $(document).ready(function () {
 const nuevo = document.querySelector("#nuevo_registro");
 const myModal = new bootstrap.Modal(document.getElementById("nuevoModal"));
 const frm = document.querySelector("#frmRegistro");
+const btnAccion = document.querySelector('#btnAccion');
 
 document.addEventListener("DOMContentLoaded", function () {
   //levantar modal
   nuevo.addEventListener("click", function () {
+    document.querySelector('#id').value = '';
     titleModal.textContent = "Nuevo usuario";
+    btnAccion.textContent = 'Registrar';
+    frm.reset();
+    document.querySelector('#clave').removeAttribute('readonly');
     myModal.show();
   });
   //submit usuarios
@@ -105,12 +110,14 @@ function editUser(idUser) {
       console.log(this.responseText);
       const res = JSON.parse(this.responseText);
       document.querySelector('#id').value = res.id;
-      document.querySelector('#nombre').value = res.nombre;
-      document.querySelector('#apellido').value = res.apellido;
+      document.querySelector('#nombre').value = res.nombres;
+      document.querySelector('#apellido').value = res.apellidos;
       document.querySelector('#correo').value = res.correo;
-
-      //myModal.hide();
-      $('#nuevoModal').modal('show');
+      document.querySelector('#clave').setAttribute('readonly', 'readonly');
+      btnAccion.textContent = 'Actualizar';
+      titleModal.textContent = "Modificar usuario";
+      myModal.show();
+      //$('#nuevoModal').modal('show');
     }
   }
 }
