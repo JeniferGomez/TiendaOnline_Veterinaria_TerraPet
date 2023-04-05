@@ -13,8 +13,14 @@ class Usuarios extends Controller
     }
     public function listar()
     {
-        $data = $this->model->getUsuarios();
+        $data = $this->model->getUsuarios(1);
         header('Content-Type: application/json');
+        for ($i = 0; $i < count($data); $i++) {
+            $data[$i]['accion'] = '                <div class="d-flex">
+            <button class="btn btn-primary" type="button"><i class="fas fa-edit"></i></button>
+            <button class="btn btn-danger" type="button" onclick="eliminarUser(' . $data[$i]['id'] . ')"><i class="fas fa-trash"></i></button>
+        </div>';
+        }
         echo json_encode($data);
         die();
     }
@@ -47,6 +53,25 @@ class Usuarios extends Controller
                 echo json_encode($mensaje);
             }
         }
+        die();
+    }
+    //eliminar usuario
+    public function delete($idUser)
+    {
+        if (is_numeric($idUser)) {
+            $data = $this->model->eliminar($idUser);
+            if ($data == 1) {
+                $mensaje = array('msg' => 'Usuario dado de baja', 'icono' => 'success');
+                header('Content-Type: application/json');
+                echo json_encode($mensaje);
+                die();
+            } else {
+                $mensaje = array('msg' => 'Error al eliminar', 'icono' => 'error');
+            }
+        } else {
+            $mensaje = array('msg' => 'Error desconocido', 'icono' => 'error');
+        }
+        echo json_encode($mensaje);
         die();
     }
 }
