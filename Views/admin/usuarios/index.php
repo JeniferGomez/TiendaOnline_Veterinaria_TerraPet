@@ -8,6 +8,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title><?php echo TITLE . ' - ' . $data['title']; ?></title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="<?php echo BASE_URL; ?>assets/css/indexAdmin/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -153,7 +154,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary" name="register" onclick="location.reload()">Registrar</button>
+                                    <button type="submit" class="btn btn-primary" name="register">Registrar</button>
                                     <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancelar</button>
                                 </div>
                             </form>
@@ -175,6 +176,7 @@
             </footer>
         </div>
     </div>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="<?php echo BASE_URL; ?>assets/demo/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -185,6 +187,9 @@
     <script src="<?php echo BASE_URL; ?>assets/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo BASE_URL; ?>assets/js/templatemo.js"></script>
     <script src="<?php echo BASE_URL; ?>assets/js/all.min.js"></script>
+    <script src="<?php echo BASE_URL; ?>assets/js/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="<?php echo BASE_URL; ?>assets/demo/datatables-simple-demo.js"></script>
     <script src="<?php echo BASE_URL; ?>assets/js/sweetalert2.all.min.js"></script>
     <script>
         const base_url = '<?php echo BASE_URL; ?>';

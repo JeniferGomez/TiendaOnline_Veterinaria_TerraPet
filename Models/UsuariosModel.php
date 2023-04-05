@@ -16,6 +16,11 @@ class UsuariosModel extends Query{
         $array = array($nombre, $apellido, $correo, $clave);
         return $this->insertar($sql, $array);
     }
+    public function verificarCorreo($correo)
+    {
+        $sql = "SELECT correo FROM usuarios WHERE correo = '$correo'";
+        return $this -> select($sql);
+    }
 }
 
 ?>

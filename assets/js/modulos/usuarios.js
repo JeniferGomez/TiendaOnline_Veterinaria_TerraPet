@@ -4,7 +4,7 @@ $(document).ready(function () {
     url: "Usuarios/listar",
     dataType: "json",
     success: function (data) {
-      tblUsuario  =
+      tblUsuario =
         "<table><thead><tr><th>ID</th><th>Nombres</th><th>Apellidos</th><th>Correo</th><th>Perfil</th></tr></thead><tbody>";
       data.forEach(function (item) {
         tblUsuario += `<tr><td>${item.id}</td><td>${item.nombres}</td><td>${item.apellidos}</td><td>${item.correo}</td><td>${item.perfil}</td></tr>`;
@@ -18,7 +18,6 @@ $(document).ready(function () {
   });
 });
 
-
 const nuevo = document.querySelector("#nuevo_registro");
 const myModal = new bootstrap.Modal(document.getElementById("nuevoModal"));
 const frm = document.querySelector("#frmRegistro");
@@ -26,7 +25,7 @@ const frm = document.querySelector("#frmRegistro");
 document.addEventListener("DOMContentLoaded", function () {
   //levantar modal
   nuevo.addEventListener("click", function () {
-    titleModal.textContent = 'Nuevo usuario'; 
+    titleModal.textContent = "Nuevo usuario";
     myModal.show();
   });
   //submit usuarios
@@ -41,16 +40,19 @@ document.addEventListener("DOMContentLoaded", function () {
       if (this.readyState == 4 && this.status == 200) {
         console.log(this.responseText);
         const res = JSON.parse(this.responseText);
-        if (res.icono == 'success') {
+        if (res.icono == "success") {
           myModal.hide();
           tblUsuario.ajax.reload();
+          // setTimeout(function() {
+          //   location.reload();
+          // }, 3000); // La página se actualizará después de 3 segundos (3000 milisegundos)
         }
-        Swal.fire(
-          'Aviso',
-          res.msg,
-          res.icono
-      )
+        alertas(res.msg, res.icono);
       }
     };
   });
 });
+
+function alertas(msg, icono) {
+  Swal.fire("Aviso!", msg.toUpperCase(), icono);
+}

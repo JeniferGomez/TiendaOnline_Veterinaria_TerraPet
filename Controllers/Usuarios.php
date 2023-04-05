@@ -28,6 +28,17 @@ class Usuarios extends Controller
                 $correo = $_POST['correo'];
                 $clave = $_POST['clave'];
                 $hash = password_hash($clave, PASSWORD_DEFAULT);
+                $result = $this->model->verificarCorreo($correo);
+                if (empty($result)) {
+                    $data = $this->model->registrar($nombre, $apellido, $correo, $hash);
+                    if ($data > 0) {
+                        $mensaje = array('msg' => 'Usuario registrado', 'icono' => 'success');
+                    } else {
+                        $mensaje = array('msg' => 'Error al registrar', 'icono' => 'error');
+                    }
+                }else{
+                    $mensaje = array('msg' => 'El correo ya esta registrado', 'icono' => 'warning');
+                }
                 $data = $this->model->registrar($nombre, $apellido, $correo, $hash);
                 if ($data > 0) {
                     $mensaje = array('msg' => 'Usuario registrado', 'icono' => 'success');
@@ -41,4 +52,3 @@ class Usuarios extends Controller
         die();
     }
 }
-?>
