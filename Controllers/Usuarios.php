@@ -34,7 +34,7 @@ class Usuarios extends Controller
             $clave = $_POST['clave'];
             $id = $_POST['id'];
             $hash = password_hash($clave, PASSWORD_DEFAULT);
-            if (empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['correo']) || empty($_POST['clave'])) {
+            if (empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['correo'])) {
                 $mensaje = array('msg' => 'Todos los campos son requeridos', 'icono' => 'warning');
             } else {
                 if (empty($id)) {
@@ -63,13 +63,13 @@ class Usuarios extends Controller
                         $mensaje = array('msg' => 'Error al modificar', 'icono' => 'error');
                     }
                 }
-
-
-                echo json_encode($mensaje);
             }
+
+            echo json_encode($mensaje);
         }
         die();
     }
+
     //eliminar usuario
     public function delete($idUser)
     {
