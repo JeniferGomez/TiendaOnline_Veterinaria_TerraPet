@@ -27,6 +27,11 @@ class UsuariosModel extends Query{
         $array = array(0, $idUser);
         return $this -> save($sql, $array);
     }
+    public function getUsuario($idUser)
+    {
+        $sql = "SELECT id, nombres, apellidos, correo, perfil FROM usuarios WHERE id = $idUser";
+        return $this -> select($sql);
+    }
 }
 
 ?>

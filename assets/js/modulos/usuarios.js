@@ -94,3 +94,23 @@ function eliminarUser(idUser) {
     }
   });
 }
+
+function editUser(idUser) {
+  const url = base_url + "usuarios/edit/" + idUser;
+  const http = new XMLHttpRequest();
+  http.open("GET", url, true);
+  http.send();
+  http.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);
+      const res = JSON.parse(this.responseText);
+      document.querySelector('#id').value = res.id;
+      document.querySelector('#nombre').value = res.nombre;
+      document.querySelector('#apellido').value = res.apellido;
+      document.querySelector('#correo').value = res.correo;
+
+      //myModal.hide();
+      $('#nuevoModal').modal('show');
+    }
+  }
+}

@@ -137,6 +137,7 @@
                             </div>
                             <form id="frmRegistro">
                                 <div class="modal-body">
+                                    <input type="hidden" id="id" name="id">
                                     <div class="form-group mb-2">
                                         <label for="nombre">Nombres</label>
                                         <input id="nombre" class="form-control" type="text" name="nombre" placeholder="Nombres" required>
