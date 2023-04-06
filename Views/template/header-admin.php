@@ -75,6 +75,10 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tags"></i></div>
                             Categorias
                         </a>
+                        <a class="nav-link" href="<?php echo BASE_URL . 'productos'; ?>">
+                            <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                            Productos
+                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
