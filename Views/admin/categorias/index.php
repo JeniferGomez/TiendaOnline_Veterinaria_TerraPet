@@ -143,20 +143,12 @@
                                 <div class="modal-body">
                                     <input type="hidden" id="id" name="id">
                                     <div class="form-group mb-2">
-                                        <label for="nombre">Nombres</label>
-                                        <input id="nombre" class="form-control" type="text" name="nombre" placeholder="Nombres" required>
+                                        <label for="categoria">Nombres</label>
+                                        <input id="categoria" class="form-control" type="text" name="categoria" placeholder="Categorias" required>
                                     </div>
-                                    <div class="form-group mb-2">
-                                        <label for="apellido">Apellidos</label>
-                                        <input id="apellido" class="form-control" type="text" name="apellido" placeholder="Apellidos" required>
-                                    </div>
-                                    <div class="form-group mb-2">
-                                        <label for="correo">Correo</label>
-                                        <input id="correo" class="form-control" type="email" name="correo" placeholder="Correo Electronico" required>
-                                    </div>
-                                    <div class="form-group mb-2">
-                                        <label for="clave">Contraseña</label>
-                                        <input id="clave" class="form-control" type="password" name="clave" placeholder="Contraseña" require>
+                                    <div class="form-group">
+                                        <label for="imagen">Imagen (Opcional)</label>
+                                        <input id="imagen" class="form-control-file" type="file" name="imagen">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -200,7 +192,7 @@
     <script>
         const base_url = '<?php echo BASE_URL; ?>';
     </script>
-    <script src="<?php echo BASE_URL; ?>assets/js/modulos/usuarios.js"></script>
+    <script src="<?php echo BASE_URL; ?>assets/js/modulos/categorias.js"></script>
 </body>
 
 </html>
