@@ -50,7 +50,6 @@ class Productos extends Controller
                 } else {
                     $destino = $ruta . 'default.png';
                 }
-
                 if (empty($id)) {
                     $data = $this->model->registrar($nombre,$descripcion, $precio, $cantidad, $destino, $categoria);
                     if ($data > 0) {

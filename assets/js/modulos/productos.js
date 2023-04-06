@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
   frm.addEventListener("submit", function (e) {
     e.preventDefault();
     let data = new FormData(this);
-    const url = base_url + "productos/registrar";
+    const url = base_url + "Productos/registrar";
     const http = new XMLHttpRequest();
     http.open("POST", url, true);
     http.send(data);
