@@ -139,7 +139,6 @@
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="listaProducto" role="tabpanel" aria-labelledby="home-tab">
-                                <br>
                                 <div class="table-responsive">
                                     <div id="table-container"></div>
                                 </div>
