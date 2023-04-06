@@ -7,7 +7,7 @@ $(document).ready(function () {
       tblCategorias =
         "<table><thead><tr><th>ID</th><th>Nombres</th><th>Imagen</th><th>Acción</th></tr></thead><tbody>";
       data.forEach(function (item) {
-        tblCategorias += `<tr><td>${item.id}</td><td>${item.nombre}</td><td>${item.imagen}</td><td>${item.accion}</td></tr>`;
+        tblCategorias += `<tr><td>${item.id}</td><td>${item.categoria}</td><td>${item.imagen}</td><td>${item.accion}</td></tr>`;
       });
       tblCategorias +=
         "</tbody><tfoot><tr><td colspan='5'>Total de Categorias: " +
@@ -27,6 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
   //levantar modal
   nuevo.addEventListener("click", function () {
     document.querySelector('#id').value = '';
+    document.querySelector('#imagen').value = '';
+    document.querySelector('#imagen_actual').value = '';
     titleModal.textContent = "Nueva categoria";
     btnAccion.textContent = 'Agregar';
     frm.reset();
@@ -52,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
               location.reload();
             }, 3000);
           });
+          document.querySelector('#imagen').value = '';
         } else {
           alertas(res.msg, res.icono);
         }
@@ -64,7 +67,7 @@ function alertas(msg, icono) {
   Swal.fire("Aviso!", msg.toUpperCase(), icono);
 }
 
-function eliminarUser(idUser) {
+function eliminarCat(idCat) {
   Swal.fire({
     title: "Aviso?",
     text: "Estas seguro de eliminar el registro?",
@@ -75,7 +78,7 @@ function eliminarUser(idUser) {
     confirmButtonText: "Si, Eliminar!",
   }).then((result) => {
     if (result.isConfirmed) {
-      const url = base_url + "usuarios/delete/" + idUser;
+      const url = base_url + "categorias/delete/" + idCat;
       const http = new XMLHttpRequest();
       http.open("GET", url, true);
       http.send();
@@ -100,7 +103,7 @@ function eliminarUser(idUser) {
 }
 
 function editCat(idCat) {
-  const url = base_url + "categorias/edit/" + idUser;
+  const url = base_url + "categorias/edit/" + idCat;
   const http = new XMLHttpRequest();
   http.open("GET", url, true);
   http.send();
@@ -109,12 +112,10 @@ function editCat(idCat) {
       console.log(this.responseText);
       const res = JSON.parse(this.responseText);
       document.querySelector('#id').value = res.id;
-      document.querySelector('#nombre').value = res.nombres;
-      document.querySelector('#apellido').value = res.apellidos;
-      document.querySelector('#correo').value = res.correo;
-      document.querySelector('#clave').setAttribute('readonly', 'readonly');
+      document.querySelector('#categoria').value = res.categoria;
+      document.querySelector('#imagen_actual').value = res.imagen;
       btnAccion.textContent = 'Actualizar';
-      titleModal.textContent = "Modificar usuario";
+      titleModal.textContent = "Modificar categoria";
       myModal.show();
       //$('#nuevoModal').modal('show');
     }

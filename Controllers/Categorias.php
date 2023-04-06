@@ -16,7 +16,8 @@ class Categorias extends Controller
         $data = $this->model->getCategorias(1);
         header('Content-Type: application/json');
         for ($i = 0; $i < count($data); $i++) {
-            $data[$i]['accion'] = '                <div class="d-flex">
+            $data[$i]['imagen'] = '<img class="img-thumbnail" src="'.$data[$i]['imagen'].'" alt="'.$data[$i]['categoria'].'" width="55">';
+            $data[$i]['accion'] = '<div class="d-flex">
             <button class="btn btn-primary" type="button" onclick="editCat(' . $data[$i]['id'] . ')"><i class="fas fa-edit"></i></button>
             <button class="btn btn-danger" type="button" onclick="eliminarCat(' . $data[$i]['id'] . ')"><i class="fas fa-trash"></i></button>
         </div>';
@@ -84,13 +85,13 @@ class Categorias extends Controller
         die();
     }
 
-    //eliminar usuario
-    public function delete($idUser)
+    //eliminar categoria
+    public function delete($idCat)
     {
-        if (is_numeric($idUser)) {
-            $data = $this->model->eliminar($idUser);
+        if (is_numeric($idCat)) {
+            $data = $this->model->eliminar($idCat);
             if ($data == 1) {
-                $mensaje = array('msg' => 'Usuario dado de baja', 'icono' => 'success');
+                $mensaje = array('msg' => 'Categoria dada de baja', 'icono' => 'success');
                 header('Content-Type: application/json');
                 echo json_encode($mensaje);
                 die();
@@ -103,11 +104,11 @@ class Categorias extends Controller
         echo json_encode($mensaje);
         die();
     }
-    //editar usuario
+    //editar categoria
     public function edit($idCat)
     {
-        if (is_numeric($idUser)) {
-            $data = $this->model->getUsuario($idUser);
+        if (is_numeric($idCat)) {
+            $data = $this->model->getCategoria($idCat);
             echo json_encode($data, JSON_UNESCAPED_UNICODE);
         }
         die();

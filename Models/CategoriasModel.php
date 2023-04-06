@@ -21,15 +21,15 @@ class CategoriasModel extends Query{
         $sql = "SELECT categoria FROM categorias WHERE categoria = '$categoria' AND estado = 1";
         return $this -> select($sql);
     }
-    public function eliminar($idUser)
+    public function eliminar($idcat)
     {
-        $sql = "UPDATE usuarios SET estado = ? WHERE id = ?";
-        $array = array(0, $idUser);
+        $sql = "UPDATE categorias SET estado = ? WHERE id = ?";
+        $array = array(0, $idcat);
         return $this -> save($sql, $array);
     }
-    public function getUsuario($idUser)
+    public function getCategoria($idcat)
     {
-        $sql = "SELECT id, nombres, apellidos, correo FROM usuarios WHERE id = $idUser";
+        $sql = "SELECT * FROM categorias WHERE id = $idcat";
         return $this -> select($sql);
     }
     public function modificar($categoria, $imagen, $id)

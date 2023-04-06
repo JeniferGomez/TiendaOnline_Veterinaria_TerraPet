@@ -51,6 +51,7 @@
         table {
             border-collapse: collapse;
             width: 100%;
+            vertical-align: middle;
         }
 
         th,
