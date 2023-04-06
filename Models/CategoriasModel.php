@@ -10,15 +10,15 @@ class CategoriasModel extends Query{
         $sql = "SELECT * FROM categorias WHERE estado = $estado";
         return $this -> selectAll($sql);
     }
-    public function registrar($nombre, $apellido, $correo, $clave)
+    public function registrar($categoria, $imagen)
     {
-        $sql = "INSERT INTO usuarios (nombres, apellidos, correo, clave) VALUES (?,?,?,?)";
-        $array = array($nombre, $apellido, $correo, $clave);
+        $sql = "INSERT INTO categorias (categoria, imagen) VALUES (?,?)";
+        $array = array($categoria, $imagen);
         return $this->insertar($sql, $array);
     }
-    public function verificarCorreo($correo)
+    public function verificarCategoria($categoria)
     {
-        $sql = "SELECT correo FROM usuarios WHERE correo = '$correo' AND estado = 1";
+        $sql = "SELECT categoria FROM categorias WHERE categoria = '$categoria' AND estado = 1";
         return $this -> select($sql);
     }
     public function eliminar($idUser)
@@ -32,10 +32,10 @@ class CategoriasModel extends Query{
         $sql = "SELECT id, nombres, apellidos, correo FROM usuarios WHERE id = $idUser";
         return $this -> select($sql);
     }
-    public function modificar($nombre, $apellido, $correo, $id)
+    public function modificar($categoria, $imagen, $id)
     {
-        $sql = "UPDATE usuarios SET nombres=?, apellidos=?, correo=? WHERE id = ?";
-        $array = array($nombre, $apellido, $correo, $id);
+        $sql = "UPDATE categorias SET categoria=?, imagen=?  WHERE id = ?";
+        $array = array($categoria, $imagen, $id);
         return $this->save($sql, $array);
     }
 }

@@ -27,17 +27,16 @@ document.addEventListener("DOMContentLoaded", function () {
   //levantar modal
   nuevo.addEventListener("click", function () {
     document.querySelector('#id').value = '';
-    titleModal.textContent = "Nuevo usuario";
-    btnAccion.textContent = 'Registrar';
+    titleModal.textContent = "Nueva categoria";
+    btnAccion.textContent = 'Agregar';
     frm.reset();
-    document.querySelector('#clave').removeAttribute('readonly');
     myModal.show();
   });
-  //submit usuarios
+  //submit categorias
   frm.addEventListener("submit", function (e) {
     e.preventDefault();
     let data = new FormData(this);
-    const url = base_url + "usuarios/registrar";
+    const url = base_url + "categorias/registrar";
     const http = new XMLHttpRequest();
     http.open("POST", url, true);
     http.send(data);
@@ -100,8 +99,8 @@ function eliminarUser(idUser) {
   });
 }
 
-function editUser(idUser) {
-  const url = base_url + "usuarios/edit/" + idUser;
+function editCat(idCat) {
+  const url = base_url + "categorias/edit/" + idUser;
   const http = new XMLHttpRequest();
   http.open("GET", url, true);
   http.send();

@@ -27,35 +27,49 @@ class Categorias extends Controller
 
     public function registrar()
     {
-        if (isset($_POST['nombre'])) {
-            $nombre = $_POST['nombre'];
-            $apellido = $_POST['apellido'];
-            $correo = $_POST['correo'];
-            $clave = $_POST['clave'];
+        if (isset($_POST['categoria'])) {
+            $categoria = $_POST['categoria'];
+            $imagen = $_FILES['imagen'];
+            $tmp_name = $imagen['tmp_name'];
             $id = $_POST['id'];
-            $hash = password_hash($clave, PASSWORD_DEFAULT);
-            if (empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['correo'])) {
+            $ruta = 'assets/img/categorias/';
+            $nombreImg = date('YmdHis');
+            if (empty($_POST['categoria'])) {
                 $mensaje = array('msg' => 'Todos los campos son requeridos', 'icono' => 'warning');
             } else {
+                if (!empty($imagen['name'])) {
+                    $destino = $ruta . $nombreImg . '.jpg';
+                } else if (!empty($_POST['imagen_actual']) && empty($imagen['name'])) {
+                    $destino = $_POST['imagen_actual'];
+                }else {
+                    $destino = $ruta . 'default.png';
+                }
+                
                 if (empty($id)) {
-                    $result = $this->model->verificarCorreo($correo);
+                    $result = $this->model->verificarCategoria($categoria);
                     if (empty($result)) {
-                        $data = $this->model->registrar($nombre, $apellido, $correo, $hash);
+                        $data = $this->model->registrar($categoria, $destino);
                         if ($data > 0) {
-                            $mensaje = array('msg' => 'Usuario registrado', 'icono' => 'success');
+                            if (!empty($imagen['name'])) {
+                                move_uploaded_file($tmp_name, $destino);
+                            }
+                            $mensaje = array('msg' => 'Categoria agregada', 'icono' => 'success');
                             header('Content-Type: application/json');
                             echo json_encode($mensaje);
                             die();
                         } else {
-                            $mensaje = array('msg' => 'Error al registrar', 'icono' => 'error');
+                            $mensaje = array('msg' => 'Error al agregar', 'icono' => 'error');
                         }
                     } else {
-                        $mensaje = array('msg' => 'El correo ya esta registrado', 'icono' => 'warning');
+                        $mensaje = array('msg' => 'Esta categoria ya esta registrado', 'icono' => 'warning');
                     }
                 } else {
-                    $data = $this->model->modificar($nombre, $apellido, $correo, $id);
+                    $data = $this->model->modificar($categoria, $destino, $id);
                     if ($data == 1) {
-                        $mensaje = array('msg' => 'Usuario modificado', 'icono' => 'success');
+                        if (!empty($imagen['name'])) {
+                            move_uploaded_file($tmp_name, $destino);
+                        }
+                        $mensaje = array('msg' => 'Categoria modificada', 'icono' => 'success');
                         header('Content-Type: application/json');
                         echo json_encode($mensaje);
                         die();
@@ -90,7 +104,7 @@ class Categorias extends Controller
         die();
     }
     //editar usuario
-    public function edit($idUser)
+    public function edit($idCat)
     {
         if (is_numeric($idUser)) {
             $data = $this->model->getUsuario($idUser);

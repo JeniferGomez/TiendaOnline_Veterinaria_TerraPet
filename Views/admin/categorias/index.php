@@ -142,6 +142,7 @@
                             <form id="frmRegistro">
                                 <div class="modal-body">
                                     <input type="hidden" id="id" name="id">
+                                    <input type="hidden" id="imagen_actual" name="imagen_actual">
                                     <div class="form-group mb-2">
                                         <label for="categoria">Nombres</label>
                                         <input id="categoria" class="form-control" type="text" name="categoria" placeholder="Categorias" required>
