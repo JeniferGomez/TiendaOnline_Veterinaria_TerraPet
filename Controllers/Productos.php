@@ -17,7 +17,7 @@ class Productos extends Controller
         $data = $this->model->getProductos(1);
         header('Content-Type: application/json');
         for ($i = 0; $i < count($data); $i++) {
-            $data[$i]['imagen'] = '<img class="img-thumbnail" src="' . $data[$i]['imagen'] . '" alt="' . $data[$i]['nombre'] . '" width="55">';
+            $data[$i]['imagen'] = '<img class="img-thumbnail" src="'.$data[$i]['imagen'].'" alt="'.$data[$i]['nombre'].'" width="55">';
             $data[$i]['accion'] = '<div class="d-flex">
             <button class="btn btn-primary" type="button" onclick="editCat(' . $data[$i]['id'] . ')"><i class="fas fa-edit"></i></button>
             <button class="btn btn-danger" type="button" onclick="eliminarCat(' . $data[$i]['id'] . ')"><i class="fas fa-trash"></i></button>
@@ -29,7 +29,7 @@ class Productos extends Controller
 
     public function registrar()
     {
-        if (isset($_POST['nombre']) && isset($_POST['precio'])) {
+        if (isset($_POST['categoria']) && isset($_POST['precio'])) {
             $nombre = $_POST['nombre'];
             $precio = $_POST['precio'];
             $cantidad = $_POST['cantidad'];
@@ -40,28 +40,29 @@ class Productos extends Controller
             $id = $_POST['id'];
             $ruta = 'assets/img/productos/';
             $nombreImg = date('YmdHis');
-            if (empty($nombre) || empty($precio) || empty($cantidad)) {
+            if (empty($_POST['nombre']) || empty($_POST['precio']) || empty($_POST['cantidad'])) {
                 $mensaje = array('msg' => 'Todos los campos son requeridos', 'icono' => 'warning');
             } else {
                 if (!empty($imagen['name'])) {
                     $destino = $ruta . $nombreImg . '.jpg';
                 } else if (!empty($_POST['imagen_actual']) && empty($imagen['name'])) {
                     $destino = $_POST['imagen_actual'];
-                } else {
+                }else {
                     $destino = $ruta . 'default.png';
                 }
+                
                 if (empty($id)) {
-                    $data = $this->model->registrar($nombre,$descripcion, $precio, $cantidad, $destino, $categoria);
+                    $data = $this->model->registrar($nombre, $descripcion, $precio, $cantidad, $destino, $categoria);
                     if ($data > 0) {
                         if (!empty($imagen['name'])) {
                             move_uploaded_file($tmp_name, $destino);
                         }
-                        $mensaje = array('msg' => 'Producto agregado', 'icono' => 'success');
+                        $mensaje = array('msg' => 'Producto registrado', 'icono' => 'success');
                         header('Content-Type: application/json');
                         echo json_encode($mensaje);
                         die();
                     } else {
-                        $mensaje = array('msg' => 'Error al agregar', 'icono' => 'error');
+                        $mensaje = array('msg' => 'Error al registrar', 'icono' => 'error');
                     }
                 } else {
                     $data = $this->model->modificar($categoria, $destino, $id);

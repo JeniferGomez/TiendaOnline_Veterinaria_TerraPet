@@ -131,20 +131,20 @@
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#listaProducto" type="button" role="tab" aria-controls="listaProducto" aria-selected="true">Productos</button>
+                                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#listarProducto" type="button" role="tab" aria-controls="listarProducto" aria-selected="true">Productos</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#nuevoProducto" type="button" role="tab" aria-controls="nuevoProducto" aria-selected="false">Nuevo</button>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="listaProducto" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="tab-pane fade show active" id="listarProducto" role="tabpanel" aria-labelledby="home-tab">
                                 <div class="table-responsive">
                                     <div id="table-container"></div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="nuevoProducto" role="tabpanel" aria-labelledby="profile-tab">
-                                <div class="card">                
+                                <div class="card">
                                     <div class="card-body">
                                         <form id="frmRegistro">
                                             <div class="row">
@@ -175,7 +175,7 @@
                                                             <option value="">Seleccionar</option>
                                                             <?php foreach ($data['categorias'] as $categoria) { ?>
                                                                 <option value="<?php echo $categoria['id']; ?>"><?php echo $categoria['categoria']; ?></option>
-                                                            <?php }  ?>
+                                                            <?php } ?>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -185,12 +185,13 @@
                                                         <textarea id="descripcion" class="form-control" name="descripcion" rows="3" placeholder="Descripción"></textarea>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-5">
-                                                <div class="form-group">
-                                                    <label for="imagen">Imagen (Opcional)</label>
-                                                    <input id="imagen" class="form-control-file" type="file" name="imagen">
+                                                <div class="col-dm-3">
+                                                    <div class="form-group">
+                                                        <label for="imagen">Imagen (Opcional)</label>
+                                                        <input id="imagen" class="form-control-file" type="file" name="imagen">
+                                                    </div>
                                                 </div>
-                                                </div>
+
                                             </div>
                                             <div class="text-end">
                                                 <button type="submit" class="btn btn-primary" name="register" id="btnAccion">Registrar</button>
@@ -201,9 +202,9 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
-
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
