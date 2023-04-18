@@ -162,11 +162,9 @@
                                                         <input id="precio" class="form-control" type="text" name="precio" placeholder="Precio" required>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-group mb-2">
-                                                        <label for="cantidad">Cantidad</label>
-                                                        <input id="cantidad" class="form-control" type="number" name="cantidad" placeholder="Cantidad" required>
-                                                    </div>
+                                                <div class="form-group mb-2">
+                                                    <label for="cantidad">Cantidad</label>
+                                                    <input id="cantidad" class="form-control" type="number" name="cantidad" placeholder="Cantidad" required>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group">

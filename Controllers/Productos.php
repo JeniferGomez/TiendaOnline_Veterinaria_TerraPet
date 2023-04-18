@@ -17,10 +17,10 @@ class Productos extends Controller
         $data = $this->model->getProductos(1);
         header('Content-Type: application/json');
         for ($i = 0; $i < count($data); $i++) {
-            $data[$i]['imagen'] = '<img class="img-thumbnail" src="'.$data[$i]['imagen'].'" alt="'.$data[$i]['nombre'].'" width="55">';
+            $data[$i]['imagen'] = '<img class="img-thumbnail" src="' . $data[$i]['imagen'] . '" alt="' . $data[$i]['nombre'] . '" width="55">';
             $data[$i]['accion'] = '<div class="d-flex">
-            <button class="btn btn-primary" type="button" onclick="editCat(' . $data[$i]['id'] . ')"><i class="fas fa-edit"></i></button>
-            <button class="btn btn-danger" type="button" onclick="eliminarCat(' . $data[$i]['id'] . ')"><i class="fas fa-trash"></i></button>
+            <button class="btn btn-primary" type="button" onclick="editPro(' . $data[$i]['id'] . ')"><i class="fas fa-edit"></i></button>
+            <button class="btn btn-danger" type="button" onclick="eliminarPro(' . $data[$i]['id'] . ')"><i class="fas fa-trash"></i></button>
         </div>';
         }
         echo json_encode($data);
@@ -47,10 +47,10 @@ class Productos extends Controller
                     $destino = $ruta . $nombreImg . '.jpg';
                 } else if (!empty($_POST['imagen_actual']) && empty($imagen['name'])) {
                     $destino = $_POST['imagen_actual'];
-                }else {
+                } else {
                     $destino = $ruta . 'default.png';
                 }
-                
+
                 if (empty($id)) {
                     $data = $this->model->registrar($nombre, $descripcion, $precio, $cantidad, $destino, $categoria);
                     if ($data > 0) {
@@ -63,6 +63,9 @@ class Productos extends Controller
                         die();
                     } else {
                         $mensaje = array('msg' => 'Error al registrar', 'icono' => 'error');
+                        header('Content-Type: application/json');
+                        echo json_encode($mensaje);
+                        die();
                     }
                 } else {
                     $data = $this->model->modificar($categoria, $destino, $id);
@@ -86,10 +89,10 @@ class Productos extends Controller
     }
 
     //eliminar categoria
-    public function delete($idCat)
+    public function eliminarPro($idPro)
     {
-        if (is_numeric($idCat)) {
-            $data = $this->model->eliminar($idCat);
+        if (is_numeric($idPro)) {
+            $data = $this->model->eliminar($idPro);
             if ($data == 1) {
                 $mensaje = array('msg' => 'Categoria dada de baja', 'icono' => 'success');
                 header('Content-Type: application/json');
@@ -105,7 +108,7 @@ class Productos extends Controller
         die();
     }
     //editar categoria
-    public function edit($idCat)
+    public function editPro($idCat)
     {
         if (is_numeric($idCat)) {
             $data = $this->model->getCategoria($idCat);
