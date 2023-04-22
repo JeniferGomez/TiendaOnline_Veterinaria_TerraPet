@@ -47,7 +47,7 @@ class Productos extends Controller
                     $destino = $ruta . $nombreImg . '.jpg';
                 } else if (!empty($_POST['imagen_actual']) && empty($imagen['name'])) {
                     $destino = $_POST['imagen_actual'];
-                } else {
+                }else {
                     $destino = $ruta . 'default.png';
                 }
 
