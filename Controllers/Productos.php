@@ -40,7 +40,7 @@ class Productos extends Controller
             $id = $_POST['id'];
             $ruta = 'assets/img/productos/';
             $nombreImg = date('YmdHis');
-            if (empty($_POST['nombre']) || empty($_POST['precio']) || empty($_POST['cantidad'])) {
+            if (empty($nombre) || empty($precio) || empty($cantidad)) {
                 $mensaje = array('msg' => 'Todos los campos son requeridos', 'icono' => 'warning');
             } else {
                 if (!empty($imagen['name'])) {
@@ -68,12 +68,12 @@ class Productos extends Controller
                         die();
                     }
                 } else {
-                    $data = $this->model->modificar($categoria, $destino, $id);
+                    $data = $this->model->modificar($nombre, $descripcion, $precio, $cantidad, $destino, $categoria, $id);
                     if ($data == 1) {
                         if (!empty($imagen['name'])) {
                             move_uploaded_file($tmp_name, $destino);
                         }
-                        $mensaje = array('msg' => 'Categoria modificada', 'icono' => 'success');
+                        $mensaje = array('msg' => 'Producto modificado', 'icono' => 'success');
                         header('Content-Type: application/json');
                         echo json_encode($mensaje);
                         die();
@@ -88,13 +88,13 @@ class Productos extends Controller
         die();
     }
 
-    //eliminar categoria
+    //eliminar productos
     public function eliminarPro($idPro)
     {
         if (is_numeric($idPro)) {
             $data = $this->model->eliminar($idPro);
             if ($data == 1) {
-                $mensaje = array('msg' => 'Categoria dada de baja', 'icono' => 'success');
+                $mensaje = array('msg' => 'Producto dado de baja', 'icono' => 'success');
                 header('Content-Type: application/json');
                 echo json_encode($mensaje);
                 die();
@@ -108,10 +108,10 @@ class Productos extends Controller
         die();
     }
     //editar categoria
-    public function editPro($idCat)
+    public function editPro($idPro)
     {
-        if (is_numeric($idCat)) {
-            $data = $this->model->getCategoria($idCat);
+        if (is_numeric($idPro)) {
+            $data = $this->model->getProducto($idPro);
             echo json_encode($data, JSON_UNESCAPED_UNICODE);
         }
         die();

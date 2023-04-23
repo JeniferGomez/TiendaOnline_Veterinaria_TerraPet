@@ -20,6 +20,8 @@ $(document).ready(function () {
 
 const frm = document.querySelector("#frmRegistro");
 const btnAccion = document.querySelector('#btnAccion');
+var firstTabEl = document.querySelector('#myTab li:last-child button')
+var firstTab = new bootstrap.Tab(firstTabEl)
 
 document.addEventListener("DOMContentLoaded", function () {
   //submit productos
@@ -54,7 +56,7 @@ function alertas(msg, icono) {
   Swal.fire("Aviso!", msg.toUpperCase(), icono);
 }
 
-function eliminarCat(idCat) {
+function eliminarPro(idPro) {
   Swal.fire({
     title: "Aviso?",
     text: "Estas seguro de eliminar el registro?",
@@ -65,7 +67,7 @@ function eliminarCat(idCat) {
     confirmButtonText: "Si, Eliminar!",
   }).then((result) => {
     if (result.isConfirmed) {
-      const url = base_url + "categorias/delete/" + idCat;
+      const url = base_url + "productos/eliminarPro/" + idPro;
       const http = new XMLHttpRequest();
       http.open("GET", url, true);
       http.send();
@@ -90,8 +92,8 @@ function eliminarCat(idCat) {
   });
 }
 
-function editCat(idCat) {
-  const url = base_url + "categorias/edit/" + idCat;
+function editPro(idPro) {
+  const url = base_url + "productos/editPro/" + idPro;
   const http = new XMLHttpRequest();
   http.open("GET", url, true);
   http.send();
@@ -100,12 +102,14 @@ function editCat(idCat) {
       console.log(this.responseText);
       const res = JSON.parse(this.responseText);
       document.querySelector('#id').value = res.id;
-      document.querySelector('#categoria').value = res.categoria;
+      document.querySelector('#nombre').value = res.nombre;
+      document.querySelector('#precio').value = res.precio;
+      document.querySelector('#cantidad').value = res.cantidad;
+      document.querySelector('#categoria').value = res.id_categoria;
+      document.querySelector('#descripcion').value = res.descripcion;
       document.querySelector('#imagen_actual').value = res.imagen;
       btnAccion.textContent = 'Actualizar';
-      titleModal.textContent = "Modificar categoria";
-      myModal.show();
-      //$('#nuevoModal').modal('show');
+      firstTab.show();
     }
   }
 }

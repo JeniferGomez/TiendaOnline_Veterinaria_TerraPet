@@ -69,7 +69,7 @@
 </head>
 
 <body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" href="index.html">Menu - Administrador</a>
         <!-- Sidebar Toggle-->
@@ -84,12 +84,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#!">Settings</a></li>
-                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                <li><a class="dropdown-item" href="<?php echo BASE_URL . 'admin/salir'; ?>">Salir</a></li>
                 </ul>
             </li>
         </ul>
@@ -117,6 +112,10 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
                             Productos
                         </a>
+                        <a class="nav-link" href="<?php echo BASE_URL . 'categorias'; ?>">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tags"></i></div>
+                            Pedidos
+                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -128,7 +127,7 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body p-5">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#listarProducto" type="button" role="tab" aria-controls="listarProducto" aria-selected="true">Productos</button>
@@ -186,14 +185,13 @@
                                                 <div class="col-dm-3">
                                                     <div class="form-group">
                                                         <label for="imagen">Imagen (Opcional)</label>
-                                                        <input id="imagen" class="form-control-file" type="file" name="imagen">
+                                                        <input id="imagen" class="form-control" type="file" name="imagen">
                                                     </div>
                                                 </div>
 
                                             </div>
                                             <div class="text-end">
                                                 <button type="submit" class="btn btn-primary" name="register" id="btnAccion">Registrar</button>
-                                                <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancelar</button>
                                             </div>
                                         </form>
                                     </div>

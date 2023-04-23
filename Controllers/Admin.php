@@ -42,4 +42,10 @@ class Admin extends Controller
         $data['title'] = 'Panel Administrativo';
         $this->views->getView('admin/administracion', "index", $data);
     }
+
+    public function salir()
+    {
+        session_destroy();
+        header('Location: ' . BASE_URL);
+    }
 }
