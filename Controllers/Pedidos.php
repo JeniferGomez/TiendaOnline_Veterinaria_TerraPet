@@ -71,4 +71,12 @@ class Pedidos extends Controller
         }
         die();
     }
+
+    public function verPedido($idPedido)
+    {
+        $data['productos'] = $this->model->verPedido($idPedido);
+        $data['moneda'] = MONEDA;
+        echo json_encode($data);
+        die();
+    }
 }

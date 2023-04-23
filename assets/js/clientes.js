@@ -1,9 +1,22 @@
 const tableLista = document.querySelector('#tableListaProductos tbody');
+consttblPendientes = document.querySelector('#tblPendientes');
 let productosjson = [];
 document.addEventListener('DOMContentLoaded', function() {
     if (tableLista) {
         getListaProductos();
     }
+    //cargar datos pendientes con DataTables
+    $('#tblPendientes').DataTable( {
+        ajax: {
+            url: base_url + 'clientes/listarPendientes',
+            dataSrc: ''
+        },
+        columns: [
+            { data: 'id_transaccion' },
+            { data: 'monto' },
+            { data: 'fecha' }
+        ]
+    } );
 });
 
 function getListaProductos() {

@@ -138,6 +138,17 @@ function verPedido(idPedido) {
     if (this.readyState == 4 && this.status == 200) {
       console.log(this.responseText);
       const res = JSON.parse(this.responseText);
+      let html = '';
+      res.productos.forEach(row => {
+        let subTotal = parseFloat(row.precio) * parseInt(row.cantidad);
+        html += `<tr>
+        <td>${row.producto}</td>
+        <td><span class="badge bg-warning">${res.modena + '' + row.precio}</span></td>
+        <td><span class=badge bg-primary">${row.cantidad}</span></td>
+        <td>${subTotal.toFixed(2)}</td>
+        </tr>`;
+      });
+      document.querySelector('#tablePedidos tbody').innerHTML = html;
       myModal.show();
     }
   };

@@ -142,4 +142,12 @@ class Clientes extends Controller
             print_r($data);
         }
     }
+
+    //listar productos pendientes
+    public function listarPendientes()
+    {
+        $data = $this->model->getPedidos(1);
+        echo json_encode($data);
+        die();
+    }
 }

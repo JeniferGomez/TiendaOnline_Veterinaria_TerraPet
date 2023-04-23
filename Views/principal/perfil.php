@@ -31,23 +31,52 @@
             <div class="col-md-4">
                 <div class="card shadown-lg">
                     <div class="card-body text-center">
-                        <img class="img-thumbnail rounded-circle" src="<?php echo BASE_URL . 'assets/img/logo.png'; ?>" alt="" width="150">
-                        <hr>
-                        <p><?php echo $_SESSION['nombreCliente']; ?></p>
-                        <p><i class="fas fa-envelope"></i> <?php echo $_SESSION['correoCliente']; ?></p>
-                        <div class="accordion" id="accordionExample">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Paypal
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <div id="paypal-button-container"></div>
+                        <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Pago</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pendiente-tab" data-bs-toggle="tab" data-bs-target="#pendiente" type="button" role="tab" aria-controls="profile" aria-selected="false">Pendientes</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="completados-tab" data-bs-toggle="tab" data-bs-target="#completados" type="button" role="tab" aria-controls="contact" aria-selected="false">Completados</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <img class="img-thumbnail rounded-circle" src="<?php echo BASE_URL . 'assets/img/logo.png'; ?>" alt="" width="150">
+                                <hr>
+                                <p><?php echo $_SESSION['nombreCliente']; ?></p>
+                                <p><i class="fas fa-envelope"></i> <?php echo $_SESSION['correoCliente']; ?></p>
+                                <div class="accordion" id="accordionExample">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingOne">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                Paypal
+                                            </button>
+                                        </h2>
+                                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <div id="paypal-button-container"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="tab-pane fade" id="pendiente" role="tabpanel" aria-labelledby="pendiente-tab">
+                                <table class="table table-bordered table-striped table-hover" id="tblPendientes">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Monto</th>
+                                            <th>Fecha</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="completados" role="tabpanel" aria-labelledby="completados-tab">...</div>
                         </div>
                     </div>
                 </div>
@@ -67,7 +96,11 @@
 <!-- End Content -->
 
 <?php include_once 'Views/template/footer-principal.php'; ?>
-<script src="<?php echo BASE_URL . 'assets/js/clientes.js' ?>"></script>
+<link href="DataTables/datatables.min.css" rel="stylesheet"/>
+ 
+<script src="<?php echo BASE_URL . 'assets/DataTables/datatables.min.js'; ?>"></script>
+<script src="<?php echo BASE_URL . 'assets/js/clientes.js'; ?>"></script>
+
 </body>
 
 </html>
