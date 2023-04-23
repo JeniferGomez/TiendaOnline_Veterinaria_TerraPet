@@ -69,7 +69,7 @@
 </head>
 
 <body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" href="index.html">Menu - Administrador</a>
         <!-- Sidebar Toggle-->
@@ -84,12 +84,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#!">Settings</a></li>
-                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                <li><a class="dropdown-item" href="<?php echo BASE_URL . 'admin/salir'; ?>">Salir</a></li>
                 </ul>
             </li>
         </ul>
@@ -132,41 +127,78 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="card">
-                    <div class="card-body">
-                        <button class="btn btn-primary mb-2" type="button" id="nuevo_registro">Nuevo</button>
-                        <div class="table-responsive">
-                            <div id="table-container"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="nuevoModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header bg-primary">
-                                <h5 class="modal-title" id="titleModal"></h5>
-                                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                </button>
+                    <div class="card-body p-5">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#listaPedidos" type="button" role="tab" aria-controls="listaPedidos" aria-selected="true">Pedidos</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#pedidosFinalizados" type="button" role="tab" aria-controls="pedidosFinalizados" aria-selected="false">Finalizados</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="listarProducto" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="table-responsive">
+                                    <div id="table-container"></div>
+                                </div>
                             </div>
-                            <form id="frmRegistro">
-                                <div class="modal-body">
-                                    <input type="hidden" id="id" name="id">
-                                    <input type="hidden" id="imagen_actual" name="imagen_actual">
-                                    <div class="form-group mb-2">
-                                        <label for="categoria">Nombres</label>
-                                        <input id="categoria" class="form-control" type="text" name="categoria" placeholder="Categorias" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="imagen">Imagen (Opcional)</label>
-                                        <input id="imagen" class="form-control-file" type="file" name="imagen">
+                            <div class="tab-pane fade" id="nuevoProducto" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form id="frmRegistro">
+                                            <div class="row">
+                                                <input type="hidden" id="id" name="id">
+                                                <input type="hidden" id="imagen_actual" name="imagen_actual">
+                                                <div class="col-md-5">
+                                                    <div class="form-group mb-2">
+                                                        <label for="nombre">Titulo</label>
+                                                        <input id="nombre" class="form-control" type="text" name="nombre" placeholder="Nombre del producto" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group mb-2">
+                                                        <label for="precio">Precio</label>
+                                                        <input id="precio" class="form-control" type="text" name="precio" placeholder="Precio" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-2">
+                                                    <label for="cantidad">Cantidad</label>
+                                                    <input id="cantidad" class="form-control" type="number" name="cantidad" placeholder="Cantidad" required>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="categoria">Categoria</label>
+                                                        <select id="categoria" class="form-control" name="categoria">
+                                                            <option value="">Seleccionar</option>
+                                                            <?php foreach ($data['categorias'] as $categoria) { ?>
+                                                                <option value="<?php echo $categoria['id']; ?>"><?php echo $categoria['categoria']; ?></option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="descripcion">Descripción</label>
+                                                        <textarea id="descripcion" class="form-control" name="descripcion" rows="3" placeholder="Descripción"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-dm-3">
+                                                    <div class="form-group">
+                                                        <label for="imagen">Imagen (Opcional)</label>
+                                                        <input id="imagen" class="form-control" type="file" name="imagen">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="text-end">
+                                                <button type="submit" class="btn btn-primary" name="register" id="btnAccion">Registrar</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary" name="register" id="btnAccion">Registrar</button>
-                                    <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancelar</button>
-                                </div>
-                            </form>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </main>
@@ -184,7 +216,7 @@
             </footer>
         </div>
     </div>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="<?php echo BASE_URL; ?>assets/demo/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -202,7 +234,7 @@
     <script>
         const base_url = '<?php echo BASE_URL; ?>';
     </script>
-    <script src="<?php echo BASE_URL; ?>assets/js/modulos/categorias.js"></script>
+    <script src="<?php echo BASE_URL; ?>assets/js/modulos/productos.js"></script>
 </body>
 
 </html>

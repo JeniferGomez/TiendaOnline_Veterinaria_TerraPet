@@ -74,6 +74,10 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
                             Productos
                         </a>
+                        <a class="nav-link" href="<?php echo BASE_URL . 'pedidos'; ?>">
+                            <div class="sb-nav-link-icon"><i class="fas fa-bell"></i></div>
+                            Pedidos
+                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
