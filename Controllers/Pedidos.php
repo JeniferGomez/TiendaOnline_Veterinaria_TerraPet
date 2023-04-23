@@ -11,107 +11,63 @@ class Pedidos extends Controller
         $data['title'] = 'Pedidos';
         $this->views->getView('admin/pedidos', "index", $data);
     }
-    public function listar()
+    public function listarPedidos()
     {
-        $data = $this->model->getProductos(1);
+        $data = $this->model->getPedidos(1);
         header('Content-Type: application/json');
         for ($i = 0; $i < count($data); $i++) {
-            $data[$i]['imagen'] = '<img class="img-thumbnail" src="' . $data[$i]['imagen'] . '" alt="' . $data[$i]['nombre'] . '" width="55">';
             $data[$i]['accion'] = '<div class="d-flex">
-            <button class="btn btn-primary" type="button" onclick="editPro(' . $data[$i]['id'] . ')"><i class="fas fa-edit"></i></button>
-            <button class="btn btn-danger" type="button" onclick="eliminarPro(' . $data[$i]['id'] . ')"><i class="fas fa-trash"></i></button>
+            <button class="btn btn-success" type="button" onclick="verPedido(' . $data[$i]['id'] . ')"><i class="fas fa-eye"></i></button>
+            <button class="btn btn-info" type="button" onclick="cambiarProceso(' . $data[$i]['id'] . ', 2)"><i class="fas fa-check-circle"></i></button>
         </div>';
         }
         echo json_encode($data);
         die();
     }
 
-    public function registrar()
+    public function listarProceso()
     {
-        if (isset($_POST['categoria']) && isset($_POST['precio'])) {
-            $nombre = $_POST['nombre'];
-            $precio = $_POST['precio'];
-            $cantidad = $_POST['cantidad'];
-            $descripcion = $_POST['descripcion'];
-            $categoria = $_POST['categoria'];
-            $imagen = $_FILES['imagen'];
-            $tmp_name = $imagen['tmp_name'];
-            $id = $_POST['id'];
-            $ruta = 'assets/img/productos/';
-            $nombreImg = date('YmdHis');
-            if (empty($nombre) || empty($precio) || empty($cantidad)) {
-                $mensaje = array('msg' => 'Todos los campos son requeridos', 'icono' => 'warning');
-            } else {
-                if (!empty($imagen['name'])) {
-                    $destino = $ruta . $nombreImg . '.jpg';
-                } else if (!empty($_POST['imagen_actual']) && empty($imagen['name'])) {
-                    $destino = $_POST['imagen_actual'];
-                }else {
-                    $destino = $ruta . 'default.png';
-                }
-
-                if (empty($id)) {
-                    $data = $this->model->registrar($nombre, $descripcion, $precio, $cantidad, $destino, $categoria);
-                    if ($data > 0) {
-                        if (!empty($imagen['name'])) {
-                            move_uploaded_file($tmp_name, $destino);
-                        }
-                        $mensaje = array('msg' => 'Producto registrado', 'icono' => 'success');
-                        header('Content-Type: application/json');
-                        echo json_encode($mensaje);
-                        die();
-                    } else {
-                        $mensaje = array('msg' => 'Error al registrar', 'icono' => 'error');
-                        header('Content-Type: application/json');
-                        echo json_encode($mensaje);
-                        die();
-                    }
-                } else {
-                    $data = $this->model->modificar($nombre, $descripcion, $precio, $cantidad, $destino, $categoria, $id);
-                    if ($data == 1) {
-                        if (!empty($imagen['name'])) {
-                            move_uploaded_file($tmp_name, $destino);
-                        }
-                        $mensaje = array('msg' => 'Producto modificado', 'icono' => 'success');
-                        header('Content-Type: application/json');
-                        echo json_encode($mensaje);
-                        die();
-                    } else {
-                        $mensaje = array('msg' => 'Error al modificar', 'icono' => 'error');
-                    }
-                }
-            }
-
-            echo json_encode($mensaje);
+        $data = $this->model->getPedidos(2);
+        header('Content-Type: application/json');
+        for ($i = 0; $i < count($data); $i++) {
+            $data[$i]['accion'] = '<div class="d-flex">
+            <button class="btn btn-success" type="button" onclick="verPedido(' . $data[$i]['id'] . ')"><i class="fas fa-eye"></i></button>
+            <button class="btn btn-info" type="button" onclick="cambiarProceso(' . $data[$i]['id'] . ', 3)"><i class="fas fa-check-circle"></i></button>
+        </div>';
         }
+        echo json_encode($data);
         die();
     }
 
-    //eliminar productos
-    public function eliminarPro($idPro)
+    public function listarFinalizados()
     {
-        if (is_numeric($idPro)) {
-            $data = $this->model->eliminar($idPro);
+        $data = $this->model->getPedidos(3);
+        header('Content-Type: application/json');
+        for ($i = 0; $i < count($data); $i++) {
+            $data[$i]['accion'] = '<div class="d-flex">
+            <button class="btn btn-success" type="button" onclick="verPedido(' . $data[$i]['id'] . ')"><i class="fas fa-eye"></i></button>
+        </div>';
+        }
+        echo json_encode($data);
+        die();
+    }
+
+    public function update($datos)
+    {
+        $array = explode(',', $datos);
+        $idPedido = $array[0];
+        $proceso = $array[1];
+        if (is_numeric($idPedido)) {
+            $data = $this->model->actualizarEstado($proceso, $idPedido);
             if ($data == 1) {
-                $mensaje = array('msg' => 'Producto dado de baja', 'icono' => 'success');
+                $mensaje = array('msg' => 'Pedido actualizado', 'icono' => 'success');
                 header('Content-Type: application/json');
                 echo json_encode($mensaje);
                 die();
             } else {
-                $mensaje = array('msg' => 'Error al eliminar', 'icono' => 'error');
+                $mensaje = array('msg' => 'Error al actualizar', 'icono' => 'error');
             }
-        } else {
-            $mensaje = array('msg' => 'Error desconocido', 'icono' => 'error');
-        }
-        echo json_encode($mensaje);
-        die();
-    }
-    //editar categoria
-    public function editPro($idPro)
-    {
-        if (is_numeric($idPro)) {
-            $data = $this->model->getProducto($idPro);
-            echo json_encode($data, JSON_UNESCAPED_UNICODE);
+            echo json_encode($mensaje);
         }
         die();
     }

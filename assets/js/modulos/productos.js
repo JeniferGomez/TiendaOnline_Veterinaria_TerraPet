@@ -10,7 +10,7 @@ $(document).ready(function () {
         tblProductos += `<tr><td>${item.id}</td><td>${item.nombre}</td><td>${item.precio}</td><td>${item.cantidad}</td><td>${item.imagen}</td><td>${item.accion}</td></tr>`;
       });
       tblProductos +=
-        "</tbody><tfoot><tr><td colspan='5'>Total de Categorias: " +
+        "</tbody><tfoot><tr><td colspan='5'>Total de Productos: " +
         data.length +
         "</td></tr></tfoot></table>";
       $("#table-container").html(tblProductos);
