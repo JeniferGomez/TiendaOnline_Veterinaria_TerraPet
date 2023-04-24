@@ -119,8 +119,8 @@ function verPedido(idPedido) {
         let subTotal = parseFloat(row.precio) * parseInt(row.cantidad);
         html += `<tr>
         <td>${row.producto}</td>
-        <td><span class="badge bg-warning">${res.modena + '' + row.precio}</span></td>
-        <td><span class=badge bg-primary">${row.cantidad}</span></td>
+        <td><span class="badge bg-warning">${res.moneda + ' ' + row.precio}</span></td>
+        <td>${row.cantidad}</td>
         <td>${subTotal.toFixed(2)}</td>
         </tr>`;
       });
