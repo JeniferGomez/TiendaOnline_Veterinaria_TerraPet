@@ -13,7 +13,7 @@ class PedidosModel extends Query{
 
     public function actualizarEstado($proceso, $idPedido)
     {
-        $sql = "UPDATE pedidos SET proceso=?, imagen=?  WHERE id = ?";
+        $sql = "UPDATE pedidos SET proceso=? WHERE id = ?";
         $array = array($proceso, $idPedido);
         return $this->save($sql, $array);
     }

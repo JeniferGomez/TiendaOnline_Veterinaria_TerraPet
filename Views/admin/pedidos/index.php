@@ -173,9 +173,8 @@
                                     <div class="modal-body">
                                         <div class="table-responsive">
                                             <table class="table table-bordered table-striped table-hover align-middle" id="tablePedidos">
-                                                <thead>
+                                                <thead class="bg-dark text-white">
                                                     <tr>
-                                                        <th>#</th>
                                                         <th>Producto</th>
                                                         <th>Precio</th>
                                                         <th>Cantidad</th>

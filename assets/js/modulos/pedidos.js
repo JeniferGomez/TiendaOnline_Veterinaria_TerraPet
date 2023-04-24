@@ -62,31 +62,7 @@ const myModal = new bootstrap.Modal(document.getElementById("modalPedidos"));
 
 document.addEventListener("DOMContentLoaded", function () {
   //submit productos
-  frm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    let data = new FormData(this);
-    const url = base_url + "Productos/registrar";
-    const http = new XMLHttpRequest();
-    http.open("POST", url, true);
-    http.send(data);
-    http.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        console.log(this.responseText);
-        const res = JSON.parse(this.responseText);
-        if (res.icono == "success") {
-          Swal.fire("Éxito", res.msg, "success").then(() => {
-            tblPendientes.ajax.reload();
-            setTimeout(function () {
-              location.reload();
-            }, 3000);
-          });
-          document.querySelector("#imagen").value = "";
-        } else {
-          alertas(res.msg, res.icono);
-        }
-      }
-    };
-  });
+
 });
 
 function alertas(msg, icono) {
@@ -130,7 +106,7 @@ function cambiarProceso(idPedido, proceso) {
 }
 
 function verPedido(idPedido) {
-  const url = base_url + "pedidos/verPedido/" + idPedido;
+  const url = base_url + "clientes/verPedido/" + idPedido;
   const http = new XMLHttpRequest();
   http.open("GET", url, true);
   http.send();
