@@ -3,6 +3,10 @@ Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSyste
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
 // Bar Chart Example
+var totalProductos = document.getElementById("total-productos").textContent;
+var pendientes = document.getElementById("pendientes").textContent;
+var proceso = document.getElementById("proceso").textContent;
+var finalizados = document.getElementById("finalizados").textContent;
 var ctx = document.getElementById("myBarChart");
 var myLineChart = new Chart(ctx, {
   type: 'bar',
@@ -12,7 +16,7 @@ var myLineChart = new Chart(ctx, {
       label: "Cantidad",
       backgroundColor: "rgba(2,117,216,1)",
       borderColor: "rgba(2,117,216,1)",
-      data: [0, 0, 2, <?php echo $data['productos']['total']; ?>],
+      data: [pendientes, proceso, finalizados, totalProductos],
     }],
   },
   options: {

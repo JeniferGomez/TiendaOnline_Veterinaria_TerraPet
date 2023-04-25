@@ -52,4 +52,11 @@ class Admin extends Controller
         session_destroy();
         header('Location: ' . BASE_URL);
     }
+
+    public function productosMinimos()
+    {
+        $data = $this->model->productosMinimos();
+        echo json_encode($data, JSON_UNESCAPED_UNICODE);
+        die();
+    }
 }

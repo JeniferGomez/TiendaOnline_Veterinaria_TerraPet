@@ -21,6 +21,12 @@ class AdminModel extends Query{
         $sql = "SELECT COUNT(*) AS total FROM productos WHERE estado = 1";
         return $this -> select($sql);
     }
+
+    public function productosMinimos()
+    {
+        $sql = "SELECT * FROM productos WHERE cantidad = 10 AND estado = 1 ORDER BY cantidad ASC LIMIT 3";
+        return $this -> selectAll($sql);
+    }
 }
 
 ?>

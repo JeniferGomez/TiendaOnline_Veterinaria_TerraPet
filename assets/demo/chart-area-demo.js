@@ -2,6 +2,25 @@
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
+function productosMinimos() {
+  const url = base_url + "admin/ProductosMinimos";
+  const http = new XMLHttpRequest();
+  http.open("GET", url, true);
+  http.send();
+  http.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);
+      const res = JSON.parse(this.responseText);
+      let nombre = [];
+      let cantidad = [];
+      for (let i = 0; i < res.length; i++) {
+        nombre.push(res[i]['nombre']);
+        cantidad.push(res[i]['cantidad']);
+      }
+    }
+  };
+}
+
 // Area Chart Example
 var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
