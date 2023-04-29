@@ -1,5 +1,5 @@
 <?php
-const BASE_URL = "http://localhost/TiendaOnline_Veterinaria_TerraPet/";
+const BASE_URL = "http://localhost:80/TiendaOnline_Veterinaria_TerraPet/";
 const HOST = "localhost";
 const USER = "root";
 const PASS = "";

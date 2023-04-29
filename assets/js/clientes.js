@@ -19,6 +19,20 @@ document.addEventListener('DOMContentLoaded', function() {
         ],
         language
     } );
+
+    $('#tblProductos').DataTable( {
+        ajax: {
+            url: base_url + 'clientes/listarProductos',
+            dataSrc: ''
+        },
+        columns: [
+            { data: 'id_transaccion' },
+            { data: 'monto' },
+            { data: 'fecha' },
+            { data: 'accion' }
+        ],
+        language
+    } );
 });
 
 function getListaProductos() {

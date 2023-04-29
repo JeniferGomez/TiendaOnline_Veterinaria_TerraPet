@@ -11,6 +11,9 @@
                 <button class="nav-link" id="pendiente-tab" data-bs-toggle="tab" data-bs-target="#pendiente" type="button" role="tab" aria-controls="profile" aria-selected="false">Pendientes</button>
             </li>
             <li class="nav-item" role="presentation">
+                <button class="nav-link" id="productos-tab" data-bs-toggle="tab" data-bs-target="#pendiente" type="button" role="tab" aria-controls="profile" aria-selected="false">Productos</button>
+            </li>
+            <li class="nav-item" role="presentation">
                 <button class="nav-link" id="completados-tab" data-bs-toggle="tab" data-bs-target="#completados" type="button" role="tab" aria-controls="contact" aria-selected="false">Completados</button>
             </li>
         </ul>
@@ -89,7 +92,29 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="completados" role="tabpanel" aria-labelledby="completados-tab">...</div>
+            <div class="tab-pane fade" id="productos" role="tabpanel" aria-labelledby="productos-tab">
+                <div class="col-12">
+                    <div class="card shadow-lg">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover" id="tblProductos" style="width: 100%">
+                                    <thead class="bg-dark text-white">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Producto</th>
+                                            <th>Precio</th>
+                                            <th>Cantidad</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     <?php } else { ?>
