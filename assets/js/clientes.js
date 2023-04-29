@@ -26,10 +26,11 @@ document.addEventListener('DOMContentLoaded', function() {
             dataSrc: ''
         },
         columns: [
-            { data: 'id_transaccion' },
-            { data: 'monto' },
-            { data: 'fecha' },
-            { data: 'accion' }
+            { data: 'id_producto' },
+            { data: 'producto' },
+            { data: 'precio' },
+            { data: 'cantidad' },
+            { data: '' }
         ],
         language
     } );

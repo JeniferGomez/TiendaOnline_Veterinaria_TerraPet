@@ -108,6 +108,7 @@ class Clientes extends Controller
                 $verificar = $this->model->getVerificar($correo);
                 if (!empty($verificar)) {
                     if (password_verify($clave, $verificar['clave'])) {
+                        $_SESSION['idCliente'] = $verificar['id'];
                         $_SESSION['correoCliente'] = $verificar['correo'];
                         $_SESSION['nombreCliente'] = $verificar['nombre'];
                         $mensaje = array('msg' => 'Ok', 'icono' => 'success');
@@ -146,7 +147,8 @@ class Clientes extends Controller
     //listar productos pendientes
     public function listarPendientes()
     {
-        $data = $this->model->getPedidos(1);
+        $idCliente =  $_SESSION['idCliente'];
+        $data = $this->model->getPedidos($idCliente);
         for ($i=0; $i < count($data); $i++) { 
             $data[$i]['accion'] = '<div class="text-center"><button class="btn btn-primary" type="button" onclick="verPedido('.$data[$i]['id'].')"><i class="fas fa-eye"></i></button></div>';
         }
@@ -159,5 +161,21 @@ class Clientes extends Controller
         $data['moneda'] = MONEDA;
         echo json_encode($data);
         die();
+    }
+
+    public function listarProductos()
+    {
+        $idCliente =  $_SESSION['idCliente'];
+        $data = $this->model->getProductos($idCliente);
+        for ($i=0; $i < count($data); $i++) { 
+            $data[$i]['calificacion'] = '';
+        }
+        echo json_encode($data);
+        die();
+    }
+
+    public function salir(){
+        session_destroy();
+        header('Location: ' . BASE_URL);
     }
 }

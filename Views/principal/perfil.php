@@ -11,10 +11,7 @@
                 <button class="nav-link" id="pendiente-tab" data-bs-toggle="tab" data-bs-target="#pendiente" type="button" role="tab" aria-controls="profile" aria-selected="false">Pendientes</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="productos-tab" data-bs-toggle="tab" data-bs-target="#pendiente" type="button" role="tab" aria-controls="profile" aria-selected="false">Productos</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="completados-tab" data-bs-toggle="tab" data-bs-target="#completados" type="button" role="tab" aria-controls="contact" aria-selected="false">Completados</button>
+                <button class="nav-link" id="productos-tab" data-bs-toggle="tab" data-bs-target="#productos" type="button" role="tab" aria-controls="profile" aria-selected="false">Productos</button>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">

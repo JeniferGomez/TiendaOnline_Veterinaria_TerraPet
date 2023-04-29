@@ -42,10 +42,10 @@ class ClientesModel extends Query{
         return $this -> select($sql);
     }
 
-    public function registrarPedido($id_transaccion, $monto, $estado, $fecha,  $email,  $nombre, $apellido, $direccion, $ciudad, $email_user)
+    public function registrarPedido($id_transaccion, $monto, $estado, $fecha,  $email,  $nombre, $apellido, $direccion, $ciudad, $id_cliente)
     {
-        $sql = "INSERT INTO pedidos (id_transaccion, monto, estado, fecha,  email,  nombre, apellido, direccion, ciudad, email_user) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $datos = array($id_transaccion, $monto, $estado, $fecha,  $email,  $nombre, $apellido, $direccion, $ciudad, $email_user);
+        $sql = "INSERT INTO pedidos (id_transaccion, monto, estado, fecha,  email,  nombre, apellido, direccion, ciudad, id_cliente) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $datos = array($id_transaccion, $monto, $estado, $fecha,  $email,  $nombre, $apellido, $direccion, $ciudad, $id_cliente);
         $data = $this -> insertar($sql, $datos);
         if ($data > 0) {
             $res = $data;
@@ -59,14 +59,20 @@ class ClientesModel extends Query{
         $sql = "SELECT * FROM productos WHERE id = $id_producto";
         return $this->select($sql);
     }
-    public function getPedidos($proceso)
+    public function getPedidos($id_cliente)
     {
-        $sql = "SELECT * FROM pedidos WHERE proceso = $proceso";
+        $sql = "SELECT * FROM pedidos WHERE id_cliente = $id_cliente";
         return $this->selectAll($sql);
     }
     public function verPedido($idPedido)
     {
         $sql = "SELECT d.* FROM pedidos p INNER JOIN detalle_pedidos d ON p.id = d.id_pedido WHERE p.id = $idPedido";
+        return $this->selectAll($sql);
+    }
+
+    public function getProductos($id_cliente)
+    {
+        $sql = "SELECT d.producto, d.precio, SUM(d.cantidad) AS cantidad, d.id_producto FROM pedidos p INNER JOIN detalle_pedidos d ON p.id = d.id_pedido WHERE p.id_cliente = $id_cliente GROUP BY d.id_producto;";
         return $this->selectAll($sql);
     }
 }
