@@ -101,7 +101,7 @@
                                             <th>Producto</th>
                                             <th>Precio</th>
                                             <th>Cantidad</th>
-                                            <th></th>
+                                            <th>Calificación</th>
                                         </tr>
                                     </thead>
                                     <tbody>

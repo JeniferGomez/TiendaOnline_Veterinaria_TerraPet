@@ -75,6 +75,39 @@ class ClientesModel extends Query{
         $sql = "SELECT d.producto, d.precio, SUM(d.cantidad) AS cantidad, d.id_producto FROM pedidos p INNER JOIN detalle_pedidos d ON p.id = d.id_pedido WHERE p.id_cliente = $id_cliente GROUP BY d.id_producto;";
         return $this->selectAll($sql);
     }
+
+    public function comprobarCalificacion($id_producto, $id_cliente)
+    {
+        $sql = "SELECT * FROM calificaciones WHERE id_producto = $id_producto AND id_cliente = $id_cliente";
+        return $this->select($sql);
+    }
+
+    public function agregarCalificacion($cantidad, $id_producto, $id_cliente)
+    {
+        $sql = "INSERT INTO calificaciones (cantidad, id_producto, id_cliente) VALUES (?,?,?)";
+        $datos = array($cantidad, $id_producto, $id_cliente);
+        $data = $this->insertar($sql, $datos);
+        if ($data > 0) {
+            $res = $data;
+        }else{
+            $res = 0;
+        }
+        return $res;
+    }
+
+    public function cambiarCalificacion($cantidad, $id_producto, $id_cliente)
+    {
+        $sql = "UPDATE calificaciones SET cantidad=? WHERE id_producto =? AND id_cliente=?";
+        $datos = array($cantidad, $id_producto, $id_cliente);
+        $data = $this->save($sql, $datos);
+        if ($data == 1) {
+            $res = 1;
+        }else{
+            $res = 0;
+        }
+        return $res;
+    }
+
 }
 
 ?>

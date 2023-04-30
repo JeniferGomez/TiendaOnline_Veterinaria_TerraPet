@@ -147,8 +147,8 @@ class Clientes extends Controller
     //listar productos pendientes
     public function listarPendientes()
     {
-        $idCliente =  $_SESSION['idCliente'];
-        $data = $this->model->getPedidos($idCliente);
+        $id_cliente =  $_SESSION['idCliente'];
+        $data = $this->model->getPedidos($id_cliente);
         for ($i=0; $i < count($data); $i++) { 
             $data[$i]['accion'] = '<div class="text-center"><button class="btn btn-primary" type="button" onclick="verPedido('.$data[$i]['id'].')"><i class="fas fa-eye"></i></button></div>';
         }
@@ -165,12 +165,52 @@ class Clientes extends Controller
 
     public function listarProductos()
     {
-        $idCliente =  $_SESSION['idCliente'];
-        $data = $this->model->getProductos($idCliente);
+        $id_cliente =  $_SESSION['idCliente'];
+        $data = $this->model->getProductos($id_cliente);
         for ($i=0; $i < count($data); $i++) { 
-            $data[$i]['calificacion'] = '';
+            $comprobar = $this->model->comprobarCalificacion($data[$i]['id_producto'], $id_cliente);
+            $total = (empty($comprobar)) ? 0 : $comprobar['cantidad'] ;
+            $uno = ($total >= 1) ? 'text-warning' : 'text-muted' ;
+            $dos = ($total >= 2) ? 'text-warning' : 'text-muted' ;
+            $tres = ($total >= 3) ? 'text-warning' : 'text-muted' ;
+            $cuatro = ($total >= 4) ? 'text-warning' : 'text-muted' ;
+            $cinco = ($total == 5) ? 'text-warning' : 'text-muted' ;
+            $data[$i]['calificacion'] = '<ul class="list-unstyled d-flex justify-content-between">
+            <li class="calificacion">
+              <i class="fas fa-star '.$uno.'" onclick="agregarCalificacion('.$data[$i]['id_producto'].', 1)"></i>
+              <i class="fas fa-star '.$dos.'" onclick="agregarCalificacion('.$data[$i]['id_producto'].', 2)"></i>
+              <i class="fas fa-star '.$tres.'" onclick="agregarCalificacion('.$data[$i]['id_producto'].', 3)"></i>
+              <i class="fas fa-star '.$cuatro.'" onclick="agregarCalificacion('.$data[$i]['id_producto'].', 4)"></i>
+              <i class="fas fa-star '.$cinco.'" onclick="agregarCalificacion('.$data[$i]['id_producto'].', 5)"></i>
+            </li>
+            </ul>';
         }
         echo json_encode($data);
+        die();
+    }
+
+    public function agregarCalificacion()
+    {
+        $id_cliente =  $_SESSION['idCliente'];
+        $datos = file_get_contents('php://input');
+        $json = json_decode($datos, true);
+        $comprobar = $this->model->comprobarCalificacion( $json['id_producto'], $id_cliente);
+        if (empty($comprobar)) {
+            $data = $this->model->agregarCalificacion($json['cantidad'], $json['id_producto'], $id_cliente);
+            if ($data > 0) {
+                $mensaje = array('msg' => 'Calificación agregada', 'icono' => 'success');
+            } else {
+                $mensaje = array('msg' => 'Error al calificar', 'icono' => 'error');
+            }
+        }else{
+            $data = $this->model->cambiarCalificacion($json['cantidad'], $json['id_producto'], $id_cliente);
+            if ($data == 1) {
+                $mensaje = array('msg' => 'Calificación agregada', 'icono' => 'success');
+            } else {
+                $mensaje = array('msg' => 'Error al calificar', 'icono' => 'error');
+            }
+        }
+        echo json_encode($mensaje);
         die();
     }
 

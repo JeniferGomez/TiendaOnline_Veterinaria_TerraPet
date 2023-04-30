@@ -178,6 +178,10 @@ body, ul, li, p, a, label, input, div {
   height: 6px;
 }
 
+.calificacion{
+  cursor: pointer;
+}
+
 @media (min-width: 576px) {
   .tempaltemo-carousel .h1 { font-size: 1em !important;}
 }
