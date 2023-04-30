@@ -115,9 +115,51 @@
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-util text-white" id="btnCantidadDeseo">0</span>
                     </a>
                     <?php if (!empty($_SESSION['correoCliente'])) { ?>
+
+                        <style>
+                            .client-logo {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                justify-content: center;
+                                position: relative;
+                                text-align: center;
+                            }
+
+                            .client-logo img {
+                                margin-bottom: 5px;
+                            }
+
+                            .client-logo span {
+                                position: absolute;
+                                top: 50%;
+                                margin-top: 25px;
+                                /* Este valor debe ser la mitad del alto de la imagen */
+                                font-size: 13px;
+                                text-align: center;
+                                width: 100%;
+                                color: black;
+                                background-color: transparent;
+                                padding: 3px 0;
+                                box-sizing: border-box;
+                            }
+                        </style>
+
                         <a class="nav-icon position-relative text-decoration-none" href="<?php echo BASE_URL . 'clientes' ?>">
-                            <img class="img-thumbnail" src="<?php echo BASE_URL . 'assets/img/clientes/default.png' ?>" alt="-LOGO-CLIENTE" width="50">
+                            <div class="client-logo">
+                                <img class="img-thumbnail" src="<?php echo BASE_URL . 'assets/img/clientes/default.jpg' ?>" alt="-LOGO-CLIENTE" width="50">
+                                <span>Pagar</span>
+                            </div>
                         </a>
+
+                        <a class="nav-icon position-relative text-decoration-none" href="<?php echo BASE_URL . 'admin/salir'; ?>">
+                            <div class="client-logo">
+                                <img class="img-thumbnail" src="<?php echo BASE_URL . 'assets/img/clientes/salir.png' ?>" alt="-LOGO-CLIENTE" width="50">
+                                <span>Salir</span>
+                            </div>
+                        </a>
+
+
                     <?php } else { ?>
                         <a class="nav-icon position-relative text-decoration-none" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">
                             <i class="fas fa-fw fa-user text-dark mr-3"></i>

@@ -44,25 +44,64 @@
                     <div class="col-md-4">
                         <div class="card shadown-lg">
                             <div class="card-body text-center">
-                                <img class="img-thumbnail rounded-circle" src="<?php echo BASE_URL . 'assets/img/logo.png'; ?>" alt="" width="150">
+                                <img class="img-thumbnail rounded-circle" src="<?php echo BASE_URL . 'assets/img/logo.jpg'; ?>" alt="" width="150">
                                 <hr>
                                 <p><?php echo $_SESSION['nombreCliente']; ?></p>
                                 <p><i class="fas fa-envelope"></i> <?php echo $_SESSION['correoCliente']; ?></p>
-                                <div class="accordion" id="accordionExample">
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingOne">
-                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                Paypal
-                                            </button>
-                                        </h2>
-                                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                            <div class="accordion-body">
-                                                <div id="paypal-button-container"></div>
-                                            </div>
+                            </div>
+
+                            <!-- Modal pedidos -->
+
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="modal">Procesar tu compra</button>
+
+                            <div id="myModal" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="my-modal-title" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Datos de compra</h4>
+                                            <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="form-group">
+                                                    <label for="id_pedido">ID de Pedido:</label>
+                                                    <input type="text" class="form-control" id="id_pedido" readonly>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="nombre">Nombre:</label>
+                                                    <input type="text" class="form-control" id="nombre">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="correo">Correo:</label>
+                                                    <input type="email" class="form-control" id="correo">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="celular">Celular:</label>
+                                                    <input type="tel" class="form-control" id="celular">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="telefono">Cedula:</label>
+                                                    <input type="tel" class="form-control" id="telefono">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="direccion">Dirección:</label>
+                                                    <textarea class="form-control" id="direccion"></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="card-footer">
+                                                        <h3 id="totalPagar"></h3>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" onclick="if (validarFormulario()) window.location.href='https://wa.me/+573117996339?text=Hola,%20quiero%20realizar%20una%20compra%20con%20los%20siguientes%20datos:%20ID%20de%20Pedido:%20'+document.getElementById('id_pedido').value+'%20Nombre:%20'+document.getElementById('nombre').value+'%20Correo:%20'+document.getElementById('correo').value+'%20Celular:%20'+document.getElementById('celular').value+'%20Cedula:%20'+ document.getElementById('telefono').value+'%20Direccion:%20'+document.getElementById('direccion').value+'%20Total%20a%20Pagar:%20'+document.getElementById('totalPagar').textContent;">Procesar</button>
+                                            <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancelar</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
