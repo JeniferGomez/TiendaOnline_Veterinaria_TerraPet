@@ -124,24 +124,26 @@ class Clientes extends Controller
         }
     }
 
-    public function registrarPedido()
+    public function registroPedido()
     {
-        $datos = file_get_contents('php://input');
-        $json = json_decode($datos, true);
-        if (is_array($json)) {
-            $id_transaccion = $json['id'];
-            $monto = $json['purchase_units'][0]['amount']['value'];
-            $estado = $json['status'];
-            $fecha = date('Y-m-d H:i:s');
-            $email = $json['payer']['email_address'];
-            $nombre = $json['payer']['name']['given_name'];
-            $apellido = $json['payer']['name']['surname'];
-            $direccion = $json['purchase_units'][0]['shipping']['address']['address_line_1'];
-            $ciudad = $json['purchase_units'][0]['shipping']['address']['address_line_2'];
-            $email_user = $_SESSION['correoCliente'];
-            $data = $this->model->registrarPedido($id_transaccion, $monto, $estado, $fecha,  $email,  $nombre, $apellido, $direccion, $ciudad, $email_user);
-            print_r($data);
+
+        $id_pedido = $_POST['id_transaccion'];
+        $nombre = $_POST['nombre'];
+        $correo = $_POST['email'];
+        $celular = $_POST['celular'];
+        $ciudad = $_POST['ciudad'];
+        $direccion = $_POST['direccion'];
+        $total = $_POST['monto'];
+        $id_cliente = $_SESSION['id_cliente'];
+        $fecha = date('Y-m-d H:i:s');
+        $data = $this->model->registroPedido($id_pedido, $total, $fecha, $correo, $nombre, $celular, $direccion, $ciudad, $id_cliente);
+        if ($data > 0) {
+            $mensaje = array('msg' => 'Pedido registrado con éxito', 'icono' => 'success');
+        } else {
+            $mensaje = array('msg' => 'Error al registrar pedido', 'icono' => 'error');
         }
+        echo json_encode($mensaje);
+        die();
     }
 
     //listar productos pendientes
@@ -149,8 +151,8 @@ class Clientes extends Controller
     {
         $id_cliente =  $_SESSION['idCliente'];
         $data = $this->model->getPedidos($id_cliente);
-        for ($i=0; $i < count($data); $i++) { 
-            $data[$i]['accion'] = '<div class="text-center"><button class="btn btn-primary" type="button" onclick="verPedido('.$data[$i]['id'].')"><i class="fas fa-eye"></i></button></div>';
+        for ($i = 0; $i < count($data); $i++) {
+            $data[$i]['accion'] = '<div class="text-center"><button class="btn btn-primary" type="button" onclick="verPedido(' . $data[$i]['id'] . ')"><i class="fas fa-eye"></i></button></div>';
         }
         echo json_encode($data);
         die();
@@ -167,21 +169,21 @@ class Clientes extends Controller
     {
         $id_cliente =  $_SESSION['idCliente'];
         $data = $this->model->getProductos($id_cliente);
-        for ($i=0; $i < count($data); $i++) { 
+        for ($i = 0; $i < count($data); $i++) {
             $comprobar = $this->model->comprobarCalificacion($data[$i]['id_producto'], $id_cliente);
-            $total = (empty($comprobar)) ? 0 : $comprobar['cantidad'] ;
-            $uno = ($total >= 1) ? 'text-warning' : 'text-muted' ;
-            $dos = ($total >= 2) ? 'text-warning' : 'text-muted' ;
-            $tres = ($total >= 3) ? 'text-warning' : 'text-muted' ;
-            $cuatro = ($total >= 4) ? 'text-warning' : 'text-muted' ;
-            $cinco = ($total == 5) ? 'text-warning' : 'text-muted' ;
+            $total = (empty($comprobar)) ? 0 : $comprobar['cantidad'];
+            $uno = ($total >= 1) ? 'text-warning' : 'text-muted';
+            $dos = ($total >= 2) ? 'text-warning' : 'text-muted';
+            $tres = ($total >= 3) ? 'text-warning' : 'text-muted';
+            $cuatro = ($total >= 4) ? 'text-warning' : 'text-muted';
+            $cinco = ($total == 5) ? 'text-warning' : 'text-muted';
             $data[$i]['calificacion'] = '<ul class="list-unstyled d-flex justify-content-between">
             <li class="calificacion">
-              <i class="fas fa-star '.$uno.'" onclick="agregarCalificacion('.$data[$i]['id_producto'].', 1)"></i>
-              <i class="fas fa-star '.$dos.'" onclick="agregarCalificacion('.$data[$i]['id_producto'].', 2)"></i>
-              <i class="fas fa-star '.$tres.'" onclick="agregarCalificacion('.$data[$i]['id_producto'].', 3)"></i>
-              <i class="fas fa-star '.$cuatro.'" onclick="agregarCalificacion('.$data[$i]['id_producto'].', 4)"></i>
-              <i class="fas fa-star '.$cinco.'" onclick="agregarCalificacion('.$data[$i]['id_producto'].', 5)"></i>
+              <i class="fas fa-star ' . $uno . '" onclick="agregarCalificacion(' . $data[$i]['id_producto'] . ', 1)"></i>
+              <i class="fas fa-star ' . $dos . '" onclick="agregarCalificacion(' . $data[$i]['id_producto'] . ', 2)"></i>
+              <i class="fas fa-star ' . $tres . '" onclick="agregarCalificacion(' . $data[$i]['id_producto'] . ', 3)"></i>
+              <i class="fas fa-star ' . $cuatro . '" onclick="agregarCalificacion(' . $data[$i]['id_producto'] . ', 4)"></i>
+              <i class="fas fa-star ' . $cinco . '" onclick="agregarCalificacion(' . $data[$i]['id_producto'] . ', 5)"></i>
             </li>
             </ul>';
         }
@@ -194,7 +196,7 @@ class Clientes extends Controller
         $id_cliente =  $_SESSION['idCliente'];
         $datos = file_get_contents('php://input');
         $json = json_decode($datos, true);
-        $comprobar = $this->model->comprobarCalificacion( $json['id_producto'], $id_cliente);
+        $comprobar = $this->model->comprobarCalificacion($json['id_producto'], $id_cliente);
         if (empty($comprobar)) {
             $data = $this->model->agregarCalificacion($json['cantidad'], $json['id_producto'], $id_cliente);
             if ($data > 0) {
@@ -202,7 +204,7 @@ class Clientes extends Controller
             } else {
                 $mensaje = array('msg' => 'Error al calificar', 'icono' => 'error');
             }
-        }else{
+        } else {
             $data = $this->model->cambiarCalificacion($json['cantidad'], $json['id_producto'], $id_cliente);
             if ($data == 1) {
                 $mensaje = array('msg' => 'Calificación agregada', 'icono' => 'success');
@@ -214,7 +216,8 @@ class Clientes extends Controller
         die();
     }
 
-    public function salir(){
+    public function salir()
+    {
         session_destroy();
         header('Location: ' . BASE_URL);
     }

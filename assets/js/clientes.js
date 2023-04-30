@@ -44,10 +44,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var nuevoID = Math.floor(Math.random() * 1000000000) + 1;
     nuevoID = "CLITPS" + nuevoID.toString();
     localStorage.setItem("ultimoID", nuevoID);
-    
+
     var idPedido = document.getElementById("id_pedido");
     idPedido.value = nuevoID;
-    
+
     myModal.show();
   });
 });
@@ -201,45 +201,51 @@ function agregarCalificacion(id_producto, cantidad) {
 }
 
 function validarFormulario() {
-    // Obtenemos los valores de los campos
-    var idPedido = document.getElementById("id_pedido").value.trim();
-    var nombre = document.getElementById("nombre").value.trim();
-    var correo = document.getElementById("correo").value.trim();
-    var celular = document.getElementById("celular").value.trim();
-    var cedula = document.getElementById("telefono").value.trim();
-    var direccion = document.getElementById("direccion").value.trim();
-  
-    // Validamos que ningún campo esté vacío
-    if (idPedido === "" || nombre === "" || correo === "" || celular === "" || cedula === "" || direccion === "") {
-      alert("Por favor, complete todos los campos del formulario.");
-      return false;
-    }
-  
-    // Validamos que el nombre sea un string
-    if (!/^[a-zA-Z\s]+$/.test(nombre)) {
-      alert("Por favor, ingrese un nombre válido (solo letras y espacios).");
-      return false;
-    }
-  
-    // Validamos que el correo tenga el formato correcto
-    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(correo)) {
-      alert("Por favor, ingrese un correo válido.");
-      return false;
-    }
-  
-    // Validamos que el celular tenga 10 dígitos exactos
-    if (!/^\d{10}$/.test(celular)) {
-      alert("Por favor, ingrese un número de celular válido (10 dígitos).");
-      return false;
-    }
-  
-    // Validamos que la cedula tenga de 5 a 10 dígitos
-    if (!/^\d{5,10}$/.test(cedula)) {
-      alert("Por favor, ingrese un número de cédula válido (de 5 a 10 dígitos).");
-      return false;
-    }
-  
-    // Si todo está correcto, retornamos verdadero
-    return true;
+  // Obtenemos los valores de los campos
+  var idPedido = document.getElementById("id_pedido").value.trim();
+  var nombre = document.getElementById("nombre").value.trim();
+  var correo = document.getElementById("correo").value.trim();
+  var celular = document.getElementById("celular").value.trim();
+  var cedula = document.getElementById("telefono").value.trim();
+  var direccion = document.getElementById("direccion").value.trim();
+
+  // Validamos que ningún campo esté vacío
+  if (
+    idPedido === "" ||
+    nombre === "" ||
+    correo === "" ||
+    celular === "" ||
+    cedula === "" ||
+    direccion === ""
+  ) {
+    alert("Por favor, complete todos los campos del formulario.");
+    return false;
   }
-  
+
+  // Validamos que el nombre sea un string
+  if (!/^[a-zA-Z\s]+$/.test(nombre)) {
+    alert("Por favor, ingrese un nombre válido (solo letras y espacios).");
+    return false;
+  }
+
+  // Validamos que el correo tenga el formato correcto
+  if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(correo)) {
+    alert("Por favor, ingrese un correo válido.");
+    return false;
+  }
+
+  // Validamos que el celular tenga 10 dígitos exactos
+  if (!/^\d{10}$/.test(celular)) {
+    alert("Por favor, ingrese un número de celular válido (10 dígitos).");
+    return false;
+  }
+
+  // Validamos que la cedula tenga de 5 a 10 dígitos
+  if (!/^\d{5,10}$/.test(cedula)) {
+    alert("Por favor, ingrese un número de cédula válido (de 5 a 10 dígitos).");
+    return false;
+  }
+
+  // Si todo está correcto, retornamos verdadero
+  return true;
+}

@@ -42,10 +42,11 @@ class ClientesModel extends Query{
         return $this -> select($sql);
     }
 
-    public function registrarPedido($id_transaccion, $monto, $estado, $fecha,  $email,  $nombre, $apellido, $direccion, $ciudad, $id_cliente)
+    public function registroPedido($id_pedido, $total, $fecha, $correo, $nombre, $celular, $direccion, $ciudad, $id_cliente)
     {
-        $sql = "INSERT INTO pedidos (id_transaccion, monto, estado, fecha,  email,  nombre, apellido, direccion, ciudad, id_cliente) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $datos = array($id_transaccion, $monto, $estado, $fecha,  $email,  $nombre, $apellido, $direccion, $ciudad, $id_cliente);
+        
+        $sql = "INSERT INTO pedidos (id_transaccion, monto, fecha, email, nombre, celular, direccion, ciudad, id_cliente) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $datos = array($id_pedido, $total, $fecha, $correo, $nombre, $celular, $direccion, $ciudad, $id_cliente);
         $data = $this -> insertar($sql, $datos);
         if ($data > 0) {
             $res = $data;
@@ -54,6 +55,7 @@ class ClientesModel extends Query{
         }
         return $res;
     }
+
     public function getProducto($id_producto)
     {
         $sql = "SELECT * FROM productos WHERE id = $id_producto";
