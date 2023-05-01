@@ -42,11 +42,10 @@ class ClientesModel extends Query{
         return $this -> select($sql);
     }
 
-    public function registroPedido($id_pedido, $total, $fecha, $correo, $nombre, $celular, $direccion, $ciudad, $id_cliente)
+    public function registroPed($idPedido, $nombre, $correo)
     {
-        
-        $sql = "INSERT INTO pedidos (id_transaccion, monto, fecha, email, nombre, celular, direccion, ciudad, id_cliente) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $datos = array($id_pedido, $total, $fecha, $correo, $nombre, $celular, $direccion, $ciudad, $id_cliente);
+        $sql = "INSERT INTO pedidos (id_transaccion, nombre, email) VALUES (?, ?, ?)";
+        $datos = array($idPedido, $nombre, $correo);
         $data = $this -> insertar($sql, $datos);
         if ($data > 0) {
             $res = $data;

@@ -126,24 +126,23 @@ class Clientes extends Controller
 
     public function registroPedido()
     {
-
-        $id_pedido = $_POST['id_transaccion'];
-        $nombre = $_POST['nombre'];
-        $correo = $_POST['email'];
-        $celular = $_POST['celular'];
-        $ciudad = $_POST['ciudad'];
-        $direccion = $_POST['direccion'];
-        $total = $_POST['monto'];
-        $id_cliente = $_SESSION['id_cliente'];
-        $fecha = date('Y-m-d H:i:s');
-        $data = $this->model->registroPedido($id_pedido, $total, $fecha, $correo, $nombre, $celular, $direccion, $ciudad, $id_cliente);
-        if ($data > 0) {
-            $mensaje = array('msg' => 'Pedido registrado con éxito', 'icono' => 'success');
-        } else {
-            $mensaje = array('msg' => 'Error al registrar pedido', 'icono' => 'error');
+        if (isset($_POST['nombre']) && isset($_POST['idPedido'])) {
+            if (empty($_POST['nombre']) || empty($_POST['idPedido']) || empty($_POST['correo'])) {
+                $mensaje = array('msg' => 'MODELOOOOOOOTodos los campos son requeridos', 'icono' => 'warning');
+            } else {
+                $nombre = $_POST['nombre'];
+                $idPedido = $_POST['idPedido'];
+                $correo = $_POST['correo'];
+                $data = $this->model->registroPed($idPedido, $nombre, $correo);
+                if ($data > 0) {
+                    $mensaje = array('msg' => 'Registrado con éxito', 'icono' => 'success');
+                } else {
+                    $mensaje = array('msg' => 'Error al registrarse', 'icono' => 'error');
+                }
+            }
+            echo json_encode($mensaje, JSON_UNESCAPED_UNICODE);
+            die();
         }
-        echo json_encode($mensaje);
-        die();
     }
 
     //listar productos pendientes
