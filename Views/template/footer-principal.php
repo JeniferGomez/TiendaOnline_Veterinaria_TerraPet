@@ -57,7 +57,7 @@
               </div>
               <div class="form-group mb-3">
                 <label for="claveLogin"><i class="fas fa-key"></i>Contraseña</label>
-                <input id="claveLogin" class="form-control" type="text" name="claveLogin" placeholder="Contraseña">
+                <input id="claveLogin" class="form-control" type="password" name="claveLogin" placeholder="Contraseña">
               </div>
               <a href="#" id="btnRegister">No tienes cuenta?</a>
               <div class="float-end">
@@ -76,7 +76,7 @@
               </div>
               <div class="form-group mb-3">
                 <label for="claveRegistro"><i class="fas fa-key"></i>Contraseña</label>
-                <input id="claveRegistro" class="form-control" type="text" name="claveRegistro" placeholder="Contraseña">
+                <input id="claveRegistro" class="form-control" type="password" name="claveRegistro" placeholder="Contraseña">
               </div>
               <a href="#" id="btnLogin">Ya tienes una cuenta?</a>
               <div class="float-end">

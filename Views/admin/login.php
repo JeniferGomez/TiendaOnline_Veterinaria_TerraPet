@@ -53,11 +53,11 @@
                                 <div class="card-body">
                                     <form id="formulario">
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="email" name="email" type="email" value="clinicaterrapetsog@gmail.com" placeholder="name@example.com" required>
+                                            <input class="form-control" id="email" name="email" type="email" placeholder="name@example.com" required>
                                             <label for="email">Correo electronico</label>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="clave" name="clave" type="password" value="admin" placeholder="Contraseña" required>
+                                            <input class="form-control" id="clave" name="clave" type="password" placeholder="Contraseña" required>
                                             <label for="clave">Contraseña</label>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
