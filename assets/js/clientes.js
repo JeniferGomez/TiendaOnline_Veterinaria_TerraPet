@@ -4,12 +4,6 @@ const tableLista = document.querySelector("#tableListaProductos tbody");
 const tblPendientes = document.querySelector("#tblPendientes");
 let productosjson = [];
 let tblCalificacion;
-var idPedido = document.getElementById("id_pedido").value.trim();
-var nombre = document.getElementById("nombre").value.trim();
-var correo = document.getElementById("correo").value.trim();
-var celular = document.getElementById("celular").value.trim();
-var cedula = document.getElementById("telefono").value.trim();
-var direccion = document.getElementById("direccion").value.trim();
 
 document.addEventListener("DOMContentLoaded", function () {
   if (tableLista) {
