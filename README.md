@@ -1,6 +1,9 @@
 ﻿# TiendaOnline_Veterinaria_TerraPet :hospital: :dog:
 Este repositorio contiene un proyecto basado en PHP, JavaScript y MySQL para el desarrollo de una tienda en línea para la Clínica Veterinaria TerraPet, ubicada en Sogamoso, Boyacá.
 
+##Dirección web
+http://terrapet.byethost24.com/
+
 ## Descripción del proyecto
 El objetivo principal de este proyecto es permitir a los clientes de la clínica realizar pedidos de productos para sus mascotas de manera fácil y segura. El proyecto cuenta con una interfaz intuitiva y atractiva para el usuario, donde se puede encontrar una variedad de productos para mascotas organizados por categorías, y un sistema de carrito de compras para el proceso de compra.
 
